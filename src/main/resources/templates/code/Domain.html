@@ -1,0 +1,21 @@
+package com.unclecloud.domain;
+
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
+@Data
+@Entity
+@Table(name = "${tableName}")
+public class ${className} implements Serializable {
+
+    <#if fields?? && 0 < fields?size>
+        <#list fields as f>
+            private ${f.fieldType!} ${f.fieldName!};
+        </#list>
+    </#if>
+
+}

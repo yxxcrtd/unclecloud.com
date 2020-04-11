@@ -3,6 +3,7 @@ package com.unclecloud.domain;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 @Table(name = "t_instance")
 public class Instance {
 
+    @Id
     private String id;
 
     private String userId;

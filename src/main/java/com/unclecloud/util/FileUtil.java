@@ -53,22 +53,22 @@ public class FileUtil {
     }
 
     /**
-     * 生成静态的html文件
+     * 生成文件
      *
      * @param configuration
      * @param map 数据
      * @param templateFile 模版
-     * @param targetHtml 生成后的html文件
+     * @param targetFile 生成目标文件
      * @throws Exception
      */
-    public static void generateHTML(Configuration configuration, Map<String, Object> map, String templateFile, String targetHtml) throws Exception {
+    public static void generateFile(Configuration configuration, Map<String, Object> map, String templateFile, String targetFile) throws Exception {
         Template template = configuration.getTemplate(templateFile);
-        File pathFile = new File(targetHtml.substring(0, targetHtml.lastIndexOf(File.separator)));
+        File pathFile = new File(targetFile.substring(0, targetFile.lastIndexOf(File.separator)));
         if (!pathFile.exists()) {
             pathFile.mkdir();
         }
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(targetHtml));
-        File htmlFile = new File(targetHtml);
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(targetFile));
+        File htmlFile = new File(targetFile);
         Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(htmlFile), "UTF-8"));
         template.process(map, out);
         bufferedWriter.close();
