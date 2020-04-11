@@ -2,16 +2,16 @@ package com.unclecloud.controller;
 
 import com.unclecloud.util.JsonResult;
 import freemarker.template.Configuration;
-import freemarker.template.Template;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -40,6 +40,7 @@ public class CodeController {
     private @Value("${spring.datasource.url}") String url;
     private @Value("${spring.datasource.username}") String username;
     private @Value("${spring.datasource.password}") String password;
+    private @Value("${code.folder}") String codeFolder;
 
     /**
      * Generate Code
@@ -85,8 +86,8 @@ public class CodeController {
         String className = getClassName(tableName);
         map.put("className", className);
 
-        Template template = configuration.getTemplate("code/Domain.html");
-        generateFile(configuration, map, "code/Domain.html", "code/" + className + ".java");
+        // 生成 domain
+        generateFile(configuration, map, "code/Domain.html", codeFolder + "domain" + File.separator + className + ".java");
 
         return jsonResultSuccess("SUCCESS", null);
     }
@@ -139,13 +140,12 @@ public class CodeController {
      */
     private static String getClassName(String tableName) {
         String result = "";
-        String[] fields = tableName.toLowerCase().split("_");
-        if (1 < fields.length) {
-            for(int i = 0; i < fields.length; i++) {
-                result += fields[i].substring(0, 1).toUpperCase() + fields[i].substring(1, fields[i].length());
-            }
-        }
-        return result;
+        result = tableName.substring(2);
+        return StringUtils.capitalize(result); // 将首字母大写
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getClassName("t_instance"));
     }
 
 }
