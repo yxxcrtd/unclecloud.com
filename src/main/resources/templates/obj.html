@@ -1,0 +1,19 @@
+<#macro getNameByObj obj>
+	<#if obj??>
+		<#if ("index" == obj)>首页
+			<#elseif ("album" == obj)>相册
+			<#elseif ("category" == obj)>分类
+			<#elseif ("article" == obj)>文章
+			<#else>Home
+		</#if>
+	</#if>
+</#macro>
+
+<#macro getPhotoType obj>
+	<#if obj??>
+		<#if (0 == obj)>照片
+			<#elseif (1 == obj)>视频
+			<#else>Oops！
+		</#if>
+	</#if>
+</#macro>

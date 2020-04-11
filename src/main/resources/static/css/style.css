@@ -1,0 +1,371 @@
+@CHARSET "UTF-8";
+
+html body {
+    width: 100%;
+    margin: 0;
+    font: normal 14px/1.618 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC', 'EucrosiaUPC', sans-serif;
+    word-wrap: break-word;
+    word-break: break-word;
+    background-color: #f9f9f9;
+}
+
+a {
+    color: #797c80;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover, .active {
+    color: #18191a;
+    font-weight: 600;
+    text-decoration: none;
+}
+a, a:focus, a:link, a:hover, a:active, a:visited {
+    text-decoration: none !important;
+}
+
+
+ul {
+    list-style: none;
+}
+
+h2, ul {
+    margin: 0;
+    padding: 0;
+}
+
+.red {
+	color: #f00 !important;
+}
+
+
+
+/* 块及元素在所有版本的浏览器中生效，H5默认 */
+header, nav, section, footer, aside, article, figure {
+    display: block;
+}
+
+
+/* 顶部 */
+header {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+
+    /* 固定顶部 */
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0; /* 控制 position: fixed不居中 */
+    right: 0; /* 控制 position: fixed不居中 */
+    box-shadow: 0 0 5px 0 rgba(114,144,179,.06);
+    background-color: #f9f9f9;
+}
+
+nav ul {
+    float: right;
+}
+nav ul li {
+    float: left;
+    width: 80px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+
+
+
+/* 发布文章的 textarea 中的文字大小 */
+.size_20 {
+	font-size: 20px !important;
+}
+/* 新增 + 的文字大小 */
+.size_22 {
+	font-size: 22px;
+}
+
+.center {
+    text-align: center;
+}
+.grey {
+	color: #9a9a9a;
+}
+.red {
+	color: #f00 !important;
+}
+
+
+/* 块及元素在所有版本的浏览器中生效，H5默认 */
+header, nav, section, footer, aside, article, figure {
+    display: block;
+}
+
+
+
+
+#section {
+    margin-top: 40px;
+}
+
+/* List 顶部 Add 的超链接 */
+.add {
+	padding: 0 0 5px 5px;
+}
+
+
+
+
+
+
+
+/* 闪烁效果 */
+.blink {
+	0% { opacity: 1; }
+	50% { opacity: 1;}
+	50.01% { opacity: 0; } /* 注意这里定义50.01%立刻透明度为０，可以设置闪烁效果 */
+	100% { opacity: 0; }
+}
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-o-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+/* 定义blink类*/
+.blink{
+    animation: blink .75s linear infinite;
+    -webkit-animation: blink .75s linear infinite;
+    -moz-animation: blink .75s linear infinite;
+    -ms-animation: blink .75s linear infinite;
+    -o-animation: blink .75s linear infinite;
+    color: #FF0000;
+    font-weight: bold;
+}
+
+/* 分页样式 */
+#pageNav {
+    float: right;
+    padding-right: 10px;
+}
+#pageNav a {
+    padding: 0 2px;
+}
+.page_active {
+	color: #F00 !important;
+}
+
+
+
+
+
+
+.form-control {
+	font-size: 12px;
+	background-color: #FFF !important;
+	border: 1px solid #E0E0E0 !important;
+	border-radius: 3px !important;
+	color: #565656 !important;
+	padding: 10px !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	width: 100%;
+}
+.form-control:focus {
+	background-color: #FFF !important;
+	border: 1px solid #9a9a9a !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	outline: 0 !important;
+	color: #333333 !important;
+}
+
+.table {
+    width: 100%;
+    border: none;
+}
+
+.table > thead > tr > th, .table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+.table > thead > tr > th {
+	color: #9A9A9A;
+	text-align: left;
+	padding-bottom: 5px;
+}
+
+
+
+
+/* notify 样式 */
+
+/* 弹出提示信息的长度 */
+.col-sm-3 {
+	width: 20%;
+}
+
+/* 关闭 */
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity:.2
+}
+.close:focus, .close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity:.5
+}
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border:0
+}
+
+
+.alert {
+	border: 0;
+	border-radius: 0;
+	color: #FFF;
+	padding: 10px 15px !important;
+	font-size: 14px;
+	font-weight: bold;
+}
+.container .alert {
+	border-radius: 4px;
+}
+.navbar .alert {
+	border-radius: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 85px;
+	width: 100%;
+	z-index: 3;
+}
+.navbar:not(.navbar-transparent) .alert {
+	top: 70px;
+}
+.alert span[data-notify="icon"] {
+	font-size: 30px;
+	display: block;
+	left: 15px;
+	position: absolute;
+	top: 50%;
+	margin-top: -15px;
+}
+.alert button.close {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	margin-top: -13px;
+	z-index: 1033;
+	display: block;
+	border-radius: 50%;
+	opacity: .4;
+	line-height: 11px;
+	width: 25px;
+	height: 25px;
+	outline: 0 !important;
+	text-align: center;
+	padding: 5px;
+	font-weight: 300;
+}
+.alert button.close:hover {
+	opacity: .55;
+}
+.alert .close ~ span {
+	display: block;
+	max-width: 100%;
+}
+.alert[data-notify="container"] {
+	padding: 15px;
+	border-radius: 4px;
+}
+.alert.alert-with-icon {
+	padding-left: 65px;
+}
+.alert-info {
+	background-color: #63d8f1;
+}
+.alert-success {
+	background-color: #a1e82c;
+}
+.alert-warning {
+	background-color: #ffbc67;
+}
+.alert-danger {
+	background-color: #f00;
+}
+
+
+/* 相册样式 */
+.pictureBody {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2px;
+}
+.pictureBody > div {
+    margin: 2px;
+    position: relative;
+}
+.pictureBody > div > i {
+    display: block;
+}
+.pictureBody > div > a > img {
+    position: absolute;
+    vertical-align: bottom;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+em {
+	padding: 10px 0;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	font-style: normal !important;
+}
+em a:link {
+	color: #fff;
+}
+em:hover {
+	opacity: 0.7;
+	background: #000;
+    font-weight: 600;
+}
+
+
+
+
+.fancybox-is-open .fancybox-bg {
+    opacity: .95 !important;
+}

@@ -1,0 +1,95 @@
+server:
+    port: 15451
+
+    undertow:
+        io-threads: 32              # 设置 IO 线程数，它主要执行非阻塞的任务，它们会负责多个连接，默认设置每个 CPU 核心有一个线程。不要设置过大，如果过大，启动项日会报错：打开文件数过多
+        worker-threads: 256         # 阳塞任务线程数，当执行类似 Servlet 请求阻塞 IO 操作，Undertow 会从这个线程池中取得线程。它的值设置取决于系统线程执行任务的阻塞系数，默认值：IO 线程数 * 8
+        # max-http-post-size: 0       # HTTP POST 请求最大的大小
+
+        # 以下的配置会影响 buffer，这些 buffer 会用于服务器连接的IO操作，有点类似 netty 的池化内存管理
+        direct-buffers: true        # 是否分配直接内存（NIO 直接分配的是堆外内存）。取决于JVM 最大可用内存大小：（long maxMemory = Runtime.getRuntime().maxMemory();），小于 64MB 默认为 false，其余为 true
+        buffer-size: 1024           # 每块 buffer 的空间大小，空间越小利用越充分，不要设置太大，以免影响其他应用，合适即可。最大可用内存 < 64MB：512 字节。6MB <= 最大可用内存 <128MB：1024 字节。128MB < 最大可用内存：1024 * 16 - 20 字节
+        buffers-per-region: 1024    # 每个区分配的buffer数量 , 所以pool的大小是buffer-size * buffers-per-region
+
+        accesslog:
+            enabled: true
+            dir: /Users/young/Desktop
+            pattern: common
+            prefix: UncleCloud.
+            suffix: log
+            rotate: true
+
+
+
+spring:
+    http:
+        multipart:
+            enabled: false
+            location: /Users/young/WorkspacesFile/unclecloud.com/
+
+    servlet:
+        multipart:
+            max-file-size: -1 # 格式：10MB。单个文件的大小限制，-1 表示文件大小不受限制
+            max-request-size: -1 # 整个请求的最大值
+
+
+    mvc:
+        static-path-pattern: /**
+    resources:
+        static-locations: classpath:/static/, file:${spring.http.multipart.location}
+
+
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        generate-ddl: false
+        show-sql: true
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                temp:
+                    use_jdbc_metadata_defaults: false
+
+
+    datasource:
+        url: jdbc:postgresql://139.198.15.189:15432/unclecloud
+        username: unclecloud
+        password: UncleCloud3
+        driver-class-name: org.postgresql.Driver
+
+        # Hikari CP 连接池配置
+        hikari:
+            pool-name: Home_HikariCP
+            minimum-idle: 50 # 最小空闲连接数量
+            maximum-pool-size: 200 # 连接池中允许的最大连接数，默认值是：10
+            auto-commit: true # 此属性控制从池返回的连接的默认自动提交行为，默认值：true
+            idle-timeout: 600000 # 空闲连接存活最大时间，默认值：600000（10分钟）（单位：毫秒）
+            max-lifetime: 1800000 # 一个连接的最长生命周期，超时而且没被使用则被释放（retired），注意：时间要比数据库连接超时时间少！，0表示无限生命周期，默认值：1800000即30分钟（单位：毫秒）
+            connection-timeout: 30000 # 数据库连接超时时间，默认30秒，即30000（单位：毫秒）
+            connection-test-query: select version() # 验证 Postgres 连接有效与否的SQL（注意：每个数据库不一样）
+
+
+    freemarker:
+        suffix: .html
+        cache: false
+        charset: UTF-8
+        allowRequestOverride: false
+        allowSessionOverride: false
+        checkTemplateLocation: false
+        contentType: text/html
+        exposeRequestAttributes: true
+        exposeSessionAttributes: false
+        templateEncoding: UTF-8
+        settings:
+            template_update_delay: 0
+            default_encoding: UTF-8
+            classic_compatible: true
+            locale: zh_CN
+            date_format: yyyy-MM-dd
+            time_format: HH:mm:ss
+            datetime_format: yyyy-MM-dd HH:mm:ss
+            auto_import: spring.ftl as s
+
+
+# 以下是代码生成工具的配置
+
