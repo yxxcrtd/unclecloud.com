@@ -40,7 +40,8 @@ public class CodeController {
     private @Value("${spring.datasource.url}") String url;
     private @Value("${spring.datasource.username}") String username;
     private @Value("${spring.datasource.password}") String password;
-    private @Value("${code.folder}") String codeFolder;
+    private @Value("${code.folder.java}") String javaFolder;
+    private @Value("${code.folder.templates}") String templatesFolder;
 
     /**
      * Generate Code
@@ -79,7 +80,7 @@ public class CodeController {
             }
         }
 
-        // 2，生成表的 domain 类
+        // 2，准备模版数据
         Map<String, Object> map = new HashMap<>();
         map.put("tableName", tableName);
         map.put("fields", tableFieldList);
@@ -87,7 +88,24 @@ public class CodeController {
         map.put("className", className);
 
         // 生成 domain
-        generateFile(configuration, map, "code/Domain.html", codeFolder + "domain" + File.separator + className + ".java");
+        generateFile(configuration, map, "code/Domain.html", javaFolder + "domain" + File.separator + className + ".java");
+        System.out.println("Domain 生成成功！");
+
+        // 生成 controller
+        generateFile(configuration, map, "code/Controller.html", javaFolder + "controller" + File.separator + className + "Controller.java");
+        System.out.println("Controller生成成功！");
+
+        // 生成 service
+        generateFile(configuration, map, "code/Service.html", javaFolder + "service" + File.separator + className + "Service.java");
+        System.out.println("Service 生成成功！");
+
+        // 生成 serviceImpl
+        generateFile(configuration, map, "code/ServiceImpl.html", javaFolder + "service/impl" + File.separator + className + "ServiceImpl.java");
+        System.out.println("ServiceImpl 生成成功！");
+
+        // 生成 repository
+        generateFile(configuration, map, "code/Repository.html", javaFolder + "repository" + File.separator + className + "Repository.java");
+        System.out.println("Repository 生成成功！");
 
         return jsonResultSuccess("SUCCESS", null);
     }

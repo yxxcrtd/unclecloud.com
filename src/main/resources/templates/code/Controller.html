@@ -1,0 +1,75 @@
+package com.unclecloud.controller;
+
+import com.unclecloud.domain.${className};
+import com.unclecloud.service.${className}Service;
+import com.unclecloud.util.JsonResult;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.util.List;
+
+import static com.unclecloud.util.JsonResult.jsonResultSuccess;
+import static org.springframework.data.domain.Sort.Direction.DESC;
+
+/**
+ * ${className} Controller
+ */
+@Slf4j
+@RestController
+@RequestMapping("${className?uncap_first}")
+public class ${className}Controller {
+
+    @Autowired
+    private ${className}Service ${className?uncap_first}Service;
+
+    /**
+     * List
+     */
+    @GetMapping("")
+    ModelAndView list() {
+        ModelAndView mav = new ModelAndView();
+        Sort sort = Sort.by(new Sort.Order(DESC, "createTime"));
+        List<${className}> list = ${className?uncap_first}Service.findAll(sort);
+        mav.addObject("list", list);
+        mav.addObject("count", list.size());
+        mav.addObject("active", "${className?uncap_first}");
+        mav.setViewName("${className?uncap_first}/${className}");
+        return mav;
+    }
+
+    /**
+     * Edit
+     */
+    @GetMapping("edit/{id}")
+    ModelAndView edit(@PathVariable(value = "id") String id) {
+        ModelAndView mav = new ModelAndView();
+        ${className} ${className?uncap_first};
+        if ("0".equals(id)) {
+            ${className?uncap_first} = new ${className}();
+            ${className?uncap_first}.setId(id);
+        } else {
+            ${className?uncap_first} = ${className?uncap_first}Service.findById(id);
+        }
+        mav.addObject("obj", ${className?uncap_first});
+        mav.setViewName("${className?uncap_first}/${className}Edit");
+        return mav;
+    }
+
+    /**
+     * Save
+     */
+    @PostMapping("save")
+    JsonResult save(@ModelAttribute("${className?uncap_first}") @Valid ${className} ${className?uncap_first}) {
+        return jsonResultSuccess("保存成功！", ${className?uncap_first}Service.save(${className?uncap_first}));
+    }
+
+}
