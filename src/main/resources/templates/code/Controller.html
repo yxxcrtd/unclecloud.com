@@ -42,7 +42,7 @@ public class ${className}Controller {
         mav.addObject("list", list);
         mav.addObject("count", list.size());
         mav.addObject("active", "${className?uncap_first}");
-        mav.setViewName("${className?uncap_first}/${className}");
+        mav.setViewName("${className?uncap_first}/${className}List");
         return mav;
     }
 

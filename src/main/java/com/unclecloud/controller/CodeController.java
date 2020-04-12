@@ -107,6 +107,14 @@ public class CodeController {
         generateFile(configuration, map, "code/Repository.html", javaFolder + "repository" + File.separator + className + "Repository.java");
         System.out.println("Repository 生成成功！");
 
+        // 生成 Template List
+        generateFile(configuration, map, "code/List.html", templatesFolder + StringUtils.uncapitalize(className) + File.separator + className + "List.html");
+        System.out.println("Template List 生成成功！");
+
+        // 生成 Template Edit
+        generateFile(configuration, map, "code/Edit.html", templatesFolder + StringUtils.uncapitalize(className) + File.separator + className + "Edit.html");
+        System.out.println("Template Edit 生成成功！");
+
         return jsonResultSuccess("SUCCESS", null);
     }
 

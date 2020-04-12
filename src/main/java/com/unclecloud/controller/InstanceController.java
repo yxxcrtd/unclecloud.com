@@ -42,7 +42,7 @@ public class InstanceController {
         mav.addObject("list", list);
         mav.addObject("count", list.size());
         mav.addObject("active", "instance");
-        mav.setViewName("instance/Instance");
+        mav.setViewName("instance/InstanceList");
         return mav;
     }
 
