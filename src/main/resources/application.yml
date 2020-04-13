@@ -69,6 +69,30 @@ spring:
             connection-test-query: select version() # 验证 Postgres 连接有效与否的SQL（注意：每个数据库不一样）
 
 
+    #    session:
+    #        store-type: redis
+
+    data:
+        redis:
+            repositories:
+                enabled: false # 解决启动的时候出现：Spring Data Redis - Could not safely identify store assignment for repository candidate interface ...
+
+    redis:
+        host: 139.198.15.189
+        port: 15435
+        password: Zxtc_369
+        database: 8
+        timeout: 5000ms # 如果不指定单位，则默认单位：毫秒
+        user-info-live-time: 86400 # 登录信息(项目信息)在Redis中存储24小时，单位：秒
+        lettuce:
+            pool:
+                max-active: 100 # 连接池的最大数量(如果<=0则没有限制)
+                max-idle: 90 # 连接池最大空闲连接数
+                min-idle: 30 # 连接池最小空间数
+                max-wait: -1 # 连接池的最大等待时间(使用负值表示没有限制)
+
+
+
     freemarker:
         suffix: .html
         cache: false
