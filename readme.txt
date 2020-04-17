@@ -1,7 +1,9 @@
+1，代码生成自动生成：http://localhost/code/t_user
 
-VEGAS 2 Document：
-settings：   http://vegas.jaysalvat.com/documentation/settings/
-transitions：http://vegas.jaysalvat.com/documentation/transitions/
+2，
+
+3，
+
 
 
 FancyBox 3

@@ -81,7 +81,7 @@ spring:
         host: 139.198.15.189
         port: 15435
         password: Zxtc_369
-        database: 8
+        database: 8 # 默认为：0
         timeout: 5000ms # 如果不指定单位，则默认单位：毫秒
         user-info-live-time: 86400 # 登录信息(项目信息)在Redis中存储24小时，单位：秒
         lettuce:
