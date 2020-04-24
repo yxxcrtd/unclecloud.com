@@ -1,14 +1,11 @@
 package com.unclecloud.util;
 
-import org.ocpsoft.prettytime.PrettyTime;
-
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class DateUtil {
 
@@ -24,10 +21,10 @@ public class DateUtil {
     public static final String YYYYMMDDHHMMSS_CHINESE = "yyyy年MM月dd日 HH:mm:ss";
 
     // 格式化时间，返回：3秒钟前，6分钟前，8天前
-    public static final String getPrettyTime(Date date) {
-        PrettyTime t = new PrettyTime(Locale.CHINESE);
-        return t.format(date).replaceAll(" ", "");
-    }
+//    public static final String getPrettyTime(Date date) {
+//        PrettyTime t = new PrettyTime(Locale.CHINESE);
+//        return t.format(date).replaceAll(" ", "");
+//    }
 
     // 获取当前日期，如果没有指定日期格式，默认：yyyy-MM-dd HH:mm:ss
     public static final String getCurrentTime(String pattern) {

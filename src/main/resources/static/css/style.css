@@ -369,3 +369,27 @@ em:hover {
 .fancybox-is-open .fancybox-bg {
     opacity: .95 !important;
 }
+
+
+
+
+/* 后台部分 */
+.left-model {
+	width: 275px;
+	overflow-y: auto;
+
+	display: flex;
+    box-sizing: border-box;
+    height: 100vh;
+    background-color: rgb(36, 40, 42);
+    padding-top: 100px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
+}
+.right-model {
+display: flex;
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: auto;
+background-color: rgb(28, 32, 34);
+}
+
