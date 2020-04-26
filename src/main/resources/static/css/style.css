@@ -373,23 +373,37 @@ em:hover {
 
 
 
-/* 后台部分 */
-.left-model {
-	width: 275px;
-	overflow-y: auto;
-
+/* 后台管理框架部分 */
+.manage-left {
 	display: flex;
+	width: 255px;
+	overflow-y: auto;
     box-sizing: border-box;
-    height: 100vh;
-    background-color: rgb(36, 40, 42);
-    padding-top: 100px;
+    height: 100vh; /* 1个vh相当于当前屏幕可见高度的1%，也就是说：height:100vh == height:100%; vw 同理 */
+    background-color: #24282A;
+    padding-top: 10px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
 }
-.right-model {
-display: flex;
-flex-grow: 1;
-flex-shrink: 1;
-flex-basis: auto;
-background-color: rgb(28, 32, 34);
+.manage-right {
+	display: flex;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: auto;
+	background-color: #1C2022;
 }
+.manage-logo {
+	width: 200px;
+    margin: 0 auto;
+    display: block;
+    height: 50px;
+    background: #141f29;
+}
+
+/* iconfont 图标样式 */
+.icon-shili1, .icon-shili3, .icon-zhuji1, .icon-zhuji3 {
+	color: #fff;
+	font-weight: bold;
+}
+
+
 

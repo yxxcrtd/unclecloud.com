@@ -4,14 +4,54 @@
         <meta charset="UTF-8" />
         <title>后台管理</title>
         <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/iconfont.css" />
         <script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     </head>
 
     <body>
 
     <div style="display: flex;">
-        <div class="left-model"></div>
-        <div class="right-model"></div>
+        <div class="manage-left">
+            <aside class="elements__SidebarStyled-sc-17gagts-2 ifIpLr">
+                <div class="elements__InputWrapper-sc-17gagts-3 kElHha">
+                    <input placeholder="Search my sandboxes" class="sc-hrWEMg lUBBr" value="">
+                </div>
+                <div class="elements__Items-sc-17gagts-0 WCnKo" style="margin-bottom: 1rem;">
+                    <a class="elements__Container-sc-1bgdyjf-1 uEjnp active" href="/dashboard/recent" aria-current="page">
+                        <div style="width: 16px; height: 16px; margin-right: 0.25rem;"></div>
+                        <div class="elements__IconContainer-sc-1bgdyjf-2 fkIsLs">
+                            <svg width="1em" height="1em" viewBox="0 0 24 24">
+                                <path d="M3 12C3 12.5523 3.44772 13 3H14Z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                        <div class="elements__ItemName-sc-1bgdyjf-3 czyZif">Overview</div>
+                    </a>
+                    <div>
+                        <div>
+                            <a class="elements__Container-sc-1bgdyjf-1 fgeIno" href="/dashboard/sandboxes">
+                                <svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" class="elements__AnimatedChevron-sc-1bgdyjf-0 bDzvQz" style="vertical-align: middle;"><g><path d="m16.6 10l10 10-10 10-2.3-2.3 7.7-7.7-7.7-7.7z"></path></g></svg>
+                                <div class="elements__IconContainer-sc-1bgdyjf-2 fkIsLs">
+                                    <svg width="1em" height="1em" viewBox="0 0 40 40">
+                                        <path d="M18.7932 18.1206C19.0246 18.2523 19.3084 18.2515 19.539 18.1185L31.3628 11.3002C31.8655 11.0103 31.8626 10.2836 31.3575 9.99777L19.8651 3.494C19.4858 3.27967 19.0192 3.27967 18.6392 3.494L6.98325 10.0897C6.47652 10.3765 6.47553 11.1061 6.98147 11.3942L18.7932 18.1206Z" fill="currentColor"></path><path d="M17.5 21.1711C17.5 20.9063 17.3603 20.6611 17.1325 20.526L6.13248 14.0046C5.63253 13.7082 5 14.0686 5 14.6498V27.6749C5 28.107 5.00547 28.5873 5.3875 28.8026L16.3735 35.1794C16.8735 35.4696 17.5 35.1088 17.5 34.5307V21.1711Z" fill="currentColor"></path><path d="M21.1952 20.6757C20.9706 20.8116 20.8334 21.0549 20.8334 21.3174V34.514C20.8334 35.0958 21.4671 35.4561 21.967 35.1585L32.8753 28.6655C33.2348 28.4529 33.3334 28.0601 33.3334 27.6349V14.6635C33.3334 14.0793 32.695 13.7194 32.1952 14.0217L21.1952 20.6757Z" fill="currentColor"></path></svg></div><div class="elements__ItemName-sc-1bgdyjf-3 czyZif">My Sandboxes</div></a></div></div><div><a class="elements__Container-sc-1bgdyjf-1 fgeIno" href="/dashboard/templates"><div style="width: 16px; height: 16px; margin-right: 0.25rem;"></div><div class="elements__IconContainer-sc-1bgdyjf-2 fkIsLs"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.8997 18.087C20.5693 17.7176 21 17.0157 21 16.251V8.74845C21 7.98374 20.5693 7.28228 19.8997 6.91293C19.0011 6.41728 17.7509 5.70881 16.5006 5.00031L16.5006 5.00028L16.5005 5.00023L16.5005 5.00021C15.1338 4.22577 13.7671 3.4513 12.8596 2.95469C12.3196 2.65923 11.6804 2.65923 11.1404 2.95469C10.2329 3.45126 8.86641 4.22564 7.49991 5.00001C6.24947 5.70861 4.99903 6.4172 4.10034 6.91292C3.43074 7.28228 3 7.9841 3 8.74882V16.2511C3 17.0158 3.43073 17.7176 4.10034 18.087C4.99904 18.5827 6.24947 19.2913 7.49992 19.9999L7.50012 20L7.50017 20.0001C8.86659 20.7744 10.233 21.5487 11.1404 22.0452C11.6804 22.3407 12.3196 22.3407 12.8596 22.0452C13.767 21.5487 15.1334 20.7744 16.4999 20L16.4999 20L16.5 20C17.7504 19.2914 19.0009 18.5827 19.8997 18.087ZM12.3602 11.3011C12.1358 11.425 11.8638 11.4257 11.6388 11.303L6.71183 8.61724C6.18967 8.3326 6.19067 7.58252 6.71358 7.29926L11.7429 4.57499C11.9281 4.47497 12.1556 4.47497 12.3404 4.57499L17.2941 7.25857C17.8154 7.54098 17.8184 8.28808 17.2993 8.57462L12.3602 11.3011ZM11 13.2186C11 12.9518 10.8582 12.705 10.6276 12.5706L5.6276 9.65704C5.12761 9.36569 4.5 9.72636 4.5 10.3051V16.3302C4.5 16.551 4.50284 16.7965 4.7015 16.9065L9.87834 19.86C10.3783 20.1453 11 19.7842 11 19.2086V13.2186ZM13 13.2913C13 13.0268 13.1393 12.7818 13.3667 12.6466L18.3667 9.67379C18.8666 9.37654 19.5 9.73682 19.5 10.3184V16.3097C19.5 16.527 19.4488 16.7278 19.2618 16.8364L14.1287 19.8396C13.6287 20.1321 13 19.7715 13 19.1922V13.2913Z" fill="currentColor"></path></svg></div><div class="elements__ItemName-sc-1bgdyjf-3 czyZif">Templates</div></a></div><div><a class="elements__Container-sc-1bgdyjf-1 fgeIno" href="/dashboard/trash"><div style="width: 16px; height: 16px; margin-right: 0.25rem;"></div><div class="elements__IconContainer-sc-1bgdyjf-2 fkIsLs"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align: middle;"><g><path d="m31.6 6.6v3.4h-23.2v-3.4h5.7l1.8-1.6h8.2l1.8 1.6h5.7z m-21.6 25v-20h20v20c0 1.8-1.6 3.4-3.4 3.4h-13.2c-1.8 0-3.4-1.6-3.4-3.4z"></path></g></svg></div><div class="elements__ItemName-sc-1bgdyjf-3 czyZif">Trash</div></a></div></div><div style="margin: 2rem; font-size: 0.875rem;"><a class="sc-htpNat krcggI" href="/dashboard/teams/new" style="display: block;">Create Team</a>
+                    </div>
+            </aside>
+
+
+            <div class="manage-logo">
+                <a class="logo" href="/" target="_blank"><img src="images/logo.png" /></a>
+            </div>
+
+
+
+            <ul>
+                <li><i class="iconfont icon-shili1"></i></li>
+                <li><i class="iconfont icon-shili3"></i></li>
+                <li><i class="iconfont icon-zhuji1"></i></li>
+                <li><i class="iconfont icon-zhuji3"></i></li>
+            </ul>
+        </div>
+
+        <div class="manage-right"></div>
     </div>
 
     </body>
