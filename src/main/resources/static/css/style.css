@@ -381,7 +381,7 @@ em:hover {
     box-sizing: border-box;
     height: 100vh; /* 1个vh相当于当前屏幕可见高度的1%，也就是说：height:100vh == height:100%; vw 同理 */
     background-color: #24282A;
-    padding-top: 10px;
+    padding-top: 90px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
 }
 .manage-right {
@@ -390,14 +390,105 @@ em:hover {
 	flex-shrink: 1;
 	flex-basis: auto;
 	background-color: #1C2022;
+
+	padding-top: 90px;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.manage-top {
+	display: flex;
+	flex-direction: row;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	align-items: center;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	padding-top: 1rem;
 }
 .manage-logo {
+	display: flex;
 	width: 200px;
-    margin: 0 auto;
-    display: block;
     height: 50px;
-    background: #141f29;
+    margin-left: 1rem;
+	flex-direction: row;
+	-webkit-box-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: center;
+	align-items: center;
+	position: relative;
+	z-index: 10;
 }
+.manage-top-right {
+	display: flex;
+	flex-direction: row;
+	-webkit-box-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: center;
+	align-items: center;
+	position: relative;
+	z-index: 10;
+}
+.manage-top-right-wrapper {
+	display: flex;
+	margin-top: 0px;
+	margin-right: 1rem;
+}
+.manage-top-right-item {
+	margin-right: 1rem;
+}
+
+
+
+
+
+/* 后台管理中的菜单 aside */
+.manage-aside {
+	width: 255px;
+	overflow-y: auto;
+}
+
+
+.manage-menu {
+    width: 100%;
+	margin-top: 0.5rem;
+}
+.manage-menu-item {
+
+transition-duration: 0.3s;
+transition-timing-function: ease;
+transition-delay: initial;
+transition-property: all;
+display: flex;
+width: 100%;
+height: 2.5rem;
+-webkit-user-select: none;
+-webkit-box-align: center;
+align-items: center;
+padding-top: 0px;
+padding-right: 0.5rem;
+box-sizing: border-box;
+text-decoration-line: none;
+text-decoration-style: initial;
+text-decoration-color: initial;
+text-decoration: none;
+cursor: pointer;
+position: relative;
+background-color: rgb(64, 169, 243);
+color: white;
+
+}
+
+
+
+
+
+
+
 
 /* iconfont 图标样式 */
 .icon-shili1, .icon-shili3, .icon-zhuji1, .icon-zhuji3 {
