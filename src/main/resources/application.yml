@@ -60,36 +60,13 @@ spring:
         # Hikari CP 连接池配置
         hikari:
             pool-name: Home_HikariCP
-            minimum-idle: 50 # 最小空闲连接数量
-            maximum-pool-size: 200 # 连接池中允许的最大连接数，默认值是：10
+            minimum-idle: 20 # 最小空闲连接数量
+            maximum-pool-size: 30 # 连接池中允许的最大连接数，默认值是：10
             auto-commit: true # 此属性控制从池返回的连接的默认自动提交行为，默认值：true
-            idle-timeout: 600000 # 空闲连接存活最大时间，默认值：600000（10分钟）（单位：毫秒）
+            idle-timeout: 60000 # 空闲连接存活最大时间，默认值：600000（10分钟）（单位：毫秒）
             max-lifetime: 1800000 # 一个连接的最长生命周期，超时而且没被使用则被释放（retired），注意：时间要比数据库连接超时时间少！，0表示无限生命周期，默认值：1800000即30分钟（单位：毫秒）
-            connection-timeout: 30000 # 数据库连接超时时间，默认30秒，即30000（单位：毫秒）
+            connection-timeout: 60000 # 数据库连接超时时间，默认30秒，即30000（单位：毫秒）
             connection-test-query: select version() # 验证 Postgres 连接有效与否的SQL（注意：每个数据库不一样）
-
-
-    #    session:
-    #        store-type: redis
-
-    data:
-        redis:
-            repositories:
-                enabled: false # 解决启动的时候出现：Spring Data Redis - Could not safely identify store assignment for repository candidate interface ...
-
-    redis:
-        host: 222.75.209.106
-        port: 15435
-        password: UncleCloud3
-        timeout: 5000ms # 如果不指定单位，则默认单位：毫秒
-        user-info-live-time: 86400 # 登录信息(项目信息)在Redis中存储24小时，单位：秒
-        lettuce:
-            pool:
-                max-active: 50 # 连接池的最大数量(如果<=0则没有限制，不能>=数据库默认的100)
-                max-idle: 30 # 连接池最大空闲连接数
-                min-idle: 10 # 连接池最小空间数
-                max-wait: 300ms # 连接池的最大等待时间(使用负值表示没有限制)
-
 
 
     freemarker:

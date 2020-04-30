@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ManageController {
 
     /**
-     * Index
+     * Manage
      *
      * @return
      */
@@ -20,6 +20,7 @@ public class ManageController {
     ModelAndView manage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("manage/Manage");
+        mav.addObject("active", "manage");
         return mav;
     }
 
