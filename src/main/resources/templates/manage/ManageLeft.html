@@ -33,15 +33,22 @@
                         <div class="manage-left">
                             <aside class="manage-aside">
                                 <div class="manage-menu" style="margin-bottom: 1rem;">
-                                    <a href="instance" class="manage-menu-item">
-                                        <div style="width: 16px; height: 16px; margin-right: 0.25rem;"></div>
+
+                                    <a href="manage" class="manage-menu-item <#if ("manage" == active)>active</#if>">
+                                        <div class="iconfont-before"></div>
+                                        <div class="menu-iconfont"><i class="iconfont icon-shili1"></i></div>
+                                        <div class="menu-text">首页</div>
+                                    </a>
+
+                                    <a href="instance" class="manage-menu-item <#if ("instance" == active)>active</#if>">
+                                        <div class="iconfont-before"></div>
                                         <div class="menu-iconfont"><i class="iconfont icon-shili1"></i></div>
                                         <div class="menu-text">我的实例</div>
                                     </a>
 
                                     <div>
                                         <a href="instance" class="manage-menu-item-a">
-                                            <div style="width: 16px; height: 16px; margin-right: 0.25rem;"></div>
+                                            <div class="iconfont-before"></div>
                                             <div class="menu-iconfont"><i class="iconfont icon-zhuji1"></i></div>
                                             <div class="menu-text">我的主机111</div>
                                         </a>
@@ -49,7 +56,7 @@
 
                                     <div>
                                         <a href="instance" class="manage-menu-item-a">
-                                            <div style="width: 16px; height: 16px; margin-right: 0.25rem;"></div>
+                                            <div class="iconfont-before"></div>
                                             <div class="menu-iconfont"><i class="iconfont icon-zhuji1"></i></div>
                                             <div class="menu-text">我的主机222</div>
                                         </a>
@@ -57,11 +64,3 @@
                                 </div>
                             </aside>
                         </div>
-
-                        <div class="manage-right">
-                            <div class="manage-right-content">
-                                <div class="manage-content-title">
-                                    <div class="manage-content-title-left">Recent Sandboxes</div>
-                                    <div class="manage-content-title-right">right</div>
-                                </div>
-

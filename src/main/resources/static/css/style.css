@@ -476,8 +476,10 @@ em:hover {
 	text-decoration: none;
 	cursor: pointer;
 	position: relative;
-	background-color: rgb(64, 169, 243);
 	color: white;
+}
+.active {
+	background-color: rgb(64, 169, 243);
 }
 .manage-menu-item-a {
 	transition-duration: 0.3s;
@@ -501,6 +503,10 @@ em:hover {
     background-color: transparent;
     cursor: pointer;
     position: relative;
+}
+.iconfont-before {
+    width: 32px;
+    height: 16px;
 }
 .menu-iconfont {
 	display: flex;
