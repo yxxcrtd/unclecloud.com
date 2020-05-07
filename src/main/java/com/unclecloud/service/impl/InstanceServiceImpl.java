@@ -5,7 +5,7 @@ import com.unclecloud.service.InstanceService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InstanceServiceImpl extends BaseServiceImpl<Instance, String> implements InstanceService {
+public class InstanceServiceImpl extends BaseServiceImpl<Instance, Long> implements InstanceService {
 
     // @Resource
     // private InstanceRepository instanceRepository;

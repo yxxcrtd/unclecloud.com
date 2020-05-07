@@ -6,7 +6,7 @@
 
     <groupId>com.unclecloud</groupId>
     <artifactId>unclecloud</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -41,7 +41,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-
             <!-- 排除内置的 Tomcat -->
             <exclusions>
                 <exclusion>
@@ -50,20 +49,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- 使用 Undertow 替换 Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
         </dependency>
 
         <dependency>
@@ -82,12 +71,6 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>3.4.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.ocpsoft.prettytime</groupId>
-            <artifactId>prettytime</artifactId>
-            <version>4.0.3.Final</version>
         </dependency>
     </dependencies>
 
