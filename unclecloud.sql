@@ -33,6 +33,7 @@ DROP TABLE IF EXISTS t_product;
 CREATE TABLE t_product (
     id                  serial                  not null,                               -- 产品的主键ID
 	name               	varchar(128)            not null,                               -- 产品名称
+    create_time         timestamptz             not null default now(),                 -- 创建时间
     CONSTRAINT pk_t_product PRIMARY KEY (id)
 );
 

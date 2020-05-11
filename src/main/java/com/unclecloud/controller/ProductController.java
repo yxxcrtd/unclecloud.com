@@ -1,7 +1,7 @@
 package com.unclecloud.controller;
 
-import com.unclecloud.domain.${className};
-import com.unclecloud.service.${className}Service;
+import com.unclecloud.domain.Product;
+import com.unclecloud.service.ProductService;
 import com.unclecloud.util.JsonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +21,15 @@ import static com.unclecloud.util.JsonResult.jsonResultSuccess;
 import static org.springframework.data.domain.Sort.Direction.DESC;
 
 /**
- * ${className} Controller
+ * Product Controller
  */
 @Slf4j
 @RestController
-@RequestMapping("${className?uncap_first}")
-public class ${className}Controller {
+@RequestMapping("product")
+public class ProductController {
 
     @Autowired
-    private ${className}Service ${className?uncap_first}Service;
+    private ProductService productService;
 
     /**
      * List
@@ -38,11 +38,11 @@ public class ${className}Controller {
     ModelAndView list() {
         ModelAndView mav = new ModelAndView();
         Sort sort = Sort.by(new Sort.Order(DESC, "createTime"));
-        List<${className}> list = ${className?uncap_first}Service.findAll(sort);
+        List<Product> list = productService.findAll(sort);
         mav.addObject("list", list);
         mav.addObject("count", list.size());
-        mav.addObject("active", "${className?uncap_first}");
-        mav.setViewName("${className?uncap_first}/${className}List");
+        mav.addObject("active", "product");
+        mav.setViewName("product/ProductList");
         return mav;
     }
 
@@ -52,15 +52,15 @@ public class ${className}Controller {
     @GetMapping("edit/{id}")
     ModelAndView edit(@PathVariable(value = "id") Long id) {
         ModelAndView mav = new ModelAndView();
-        ${className} ${className?uncap_first};
+        Product product;
         if (0 == id) {
-            ${className?uncap_first} = new ${className}();
-            ${className?uncap_first}.setId(id);
+            product = new Product();
+            product.setId(id);
         } else {
-            ${className?uncap_first} = ${className?uncap_first}Service.findById(id);
+            product = productService.findById(id);
         }
-        mav.addObject("obj", ${className?uncap_first});
-        mav.setViewName("${className?uncap_first}/${className}Edit");
+        mav.addObject("obj", product);
+        mav.setViewName("product/ProductEdit");
         return mav;
     }
 
@@ -68,8 +68,8 @@ public class ${className}Controller {
      * Save
      */
     @PostMapping("save")
-    JsonResult save(@ModelAttribute("${className?uncap_first}") @Valid ${className} ${className?uncap_first}) {
-        return jsonResultSuccess("保存成功！", ${className?uncap_first}Service.save(${className?uncap_first}));
+    JsonResult save(@ModelAttribute("product") @Valid Product product) {
+        return jsonResultSuccess("保存成功！", productService.save(product));
     }
 
 }
