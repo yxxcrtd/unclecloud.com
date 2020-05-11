@@ -50,7 +50,7 @@ public class InstanceController {
      * Edit
      */
     @GetMapping("edit/{id}")
-    ModelAndView edit(@PathVariable(value = "id") String id) {
+    ModelAndView edit(@PathVariable(value = "id") Long id) {
         ModelAndView mav = new ModelAndView();
         Instance instance;
         if ("0".equals(id)) {
