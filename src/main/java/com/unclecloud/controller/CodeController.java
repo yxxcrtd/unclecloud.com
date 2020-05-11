@@ -170,6 +170,7 @@ public class CodeController {
         return StringUtils.capitalize(result); // 将首字母大写
     }
 
+    // 测试首字母大小写
     public static void main(String[] args) {
         System.out.println(getClassName("t_instance"));
     }

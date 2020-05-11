@@ -15,7 +15,10 @@ public class ${className} implements Serializable {
 
 <#if fields?? && 0 < fields?size>
 <#list fields as f>
-    <#if ("id" == f.fieldName)>@Id</#if>
+    <#if ("id" == f.fieldName)>
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    </#if>
     private ${f.fieldType!} ${f.fieldName!}<#if ("Date" == f.fieldType)> = new Date()</#if>;
 </#list>
 </#if>
