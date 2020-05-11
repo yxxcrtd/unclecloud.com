@@ -50,10 +50,10 @@ public class ${className}Controller {
      * Edit
      */
     @GetMapping("edit/{id}")
-    ModelAndView edit(@PathVariable(value = "id") String id) {
+    ModelAndView edit(@PathVariable(value = "id") Long id) {
         ModelAndView mav = new ModelAndView();
         ${className} ${className?uncap_first};
-        if ("0".equals(id)) {
+        if (0 == id) {
             ${className?uncap_first} = new ${className}();
             ${className?uncap_first}.setId(id);
         } else {

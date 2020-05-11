@@ -1,7 +1,7 @@
 package com.unclecloud.controller;
 
-import com.unclecloud.domain.Instance;
-import com.unclecloud.service.InstanceService;
+import com.unclecloud.domain.Product;
+import com.unclecloud.service.ProductService;
 import com.unclecloud.util.JsonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +21,15 @@ import static com.unclecloud.util.JsonResult.jsonResultSuccess;
 import static org.springframework.data.domain.Sort.Direction.DESC;
 
 /**
- * Instance Controller
+ * Product Controller
  */
 @Slf4j
 @RestController
-@RequestMapping("instance")
-public class InstanceController {
+@RequestMapping("product")
+public class ProductController {
 
     @Autowired
-    private InstanceService instanceService;
+    private ProductService productService;
 
     /**
      * List
@@ -38,11 +38,11 @@ public class InstanceController {
     ModelAndView list() {
         ModelAndView mav = new ModelAndView();
         Sort sort = Sort.by(new Sort.Order(DESC, "createTime"));
-        List<Instance> list = instanceService.findAll(sort);
+        List<Product> list = productService.findAll(sort);
         mav.addObject("list", list);
         mav.addObject("count", list.size());
-        mav.addObject("active", "instance");
-        mav.setViewName("instance/InstanceList");
+        mav.addObject("active", "product");
+        mav.setViewName("product/ProductList");
         return mav;
     }
 
@@ -52,15 +52,15 @@ public class InstanceController {
     @GetMapping("edit/{id}")
     ModelAndView edit(@PathVariable(value = "id") Long id) {
         ModelAndView mav = new ModelAndView();
-        Instance instance;
-        if ("0".equals(id)) {
-            instance = new Instance();
-            instance.setId(id);
+        Product product;
+        if (0 == id) {
+            product = new Product();
+            product.setId(id);
         } else {
-            instance = instanceService.findById(id);
+            product = productService.findById(id);
         }
-        mav.addObject("obj", instance);
-        mav.setViewName("instance/InstanceEdit");
+        mav.addObject("obj", product);
+        mav.setViewName("product/ProductEdit");
         return mav;
     }
 
@@ -68,8 +68,8 @@ public class InstanceController {
      * Save
      */
     @PostMapping("save")
-    JsonResult save(@ModelAttribute("instance") @Valid Instance instance) {
-        return jsonResultSuccess("保存成功！", instanceService.save(instance));
+    JsonResult save(@ModelAttribute("product") @Valid Product product) {
+        return jsonResultSuccess("保存成功！", productService.save(product));
     }
 
 }

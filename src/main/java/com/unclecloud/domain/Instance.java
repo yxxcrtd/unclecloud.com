@@ -14,7 +14,7 @@ import java.util.Date;
 public class Instance implements Serializable {
 
     @Id
-    private String id;
+    private Long id;
     
     private String userId;
     

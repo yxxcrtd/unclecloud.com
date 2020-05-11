@@ -148,7 +148,7 @@ public class CodeController {
             result = "String";
         } else if ("int".equals(type.toLowerCase()) || "int2".equals(type.toLowerCase()) || "smallint".equals(type.toLowerCase()) || type.toLowerCase().startsWith("int")) {
             result = "Integer";
-        } else if ("bigint".equals(type.toLowerCase()) || "int8".equals(type.toLowerCase()) || type.toLowerCase().startsWith("bigint") || type.toLowerCase().startsWith("int8")) {
+        } else if ("serial".equals(type.toLowerCase()) || "bigint".equals(type.toLowerCase()) || "int8".equals(type.toLowerCase()) || type.toLowerCase().startsWith("bigint") || type.toLowerCase().startsWith("int8")) {
             result = "Long";
         } else if ("timestamp with time zone".equals(type.toLowerCase()) || type.toLowerCase().startsWith("timestamp")) {
             result = "Date";
