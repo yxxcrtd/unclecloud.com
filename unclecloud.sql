@@ -36,5 +36,7 @@ CREATE TABLE t_product (
     create_time         timestamptz             not null default now(),                 -- 创建时间
     CONSTRAINT pk_t_product PRIMARY KEY (id)
 );
+-- 产品ID从10000
+SELECT setval('t_product_id_seq', 10001, false);
 
 

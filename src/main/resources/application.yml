@@ -60,7 +60,7 @@ spring:
         # Hikari CP 连接池配置
         hikari:
             pool-name: Home_HikariCP
-            minimum-idle: 20 # 最小空闲连接数量
+            minimum-idle: 10 # 最小空闲连接数量
             maximum-pool-size: 30 # 连接池中允许的最大连接数，默认值是：10
             auto-commit: true # 此属性控制从池返回的连接的默认自动提交行为，默认值：true
             idle-timeout: 60000 # 空闲连接存活最大时间，默认值：600000（10分钟）（单位：毫秒）
