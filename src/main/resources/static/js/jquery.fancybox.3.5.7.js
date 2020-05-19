@@ -5,6 +5,7 @@
 // or fancyBox Commercial License for commercial use
 //
 // https://fancyapps.com/fancybox/3/
+// 中文文档：https://juejin.im/post/5a30c475f265da430a509184
 // Copyright 2019 fancyApps
 //
 // ==================================================
@@ -27,7 +28,6 @@
 
   if ($.fn.fancybox) {
     console.info("fancyBox already initialized");
-
     return;
   }
 
@@ -251,10 +251,11 @@
     },
 
     // Set `touch: false` to disable panning/swiping
-    touch: {
-      vertical: true, // Allow to drag content vertically
-      momentum: true // Continue movement after releasing mouse/touch when panning
-    },
+    touch: false, // 注释了默认可以拖动，上下拖动的时候，弹出层会消失
+//    touch: {
+//      vertical: true, // Allow to drag content vertically
+//      momentum: true // Continue movement after releasing mouse/touch when panning
+//    },
 
     // Hash value when initializing manually,
     // set `false` to disable hash change
@@ -334,8 +335,8 @@
       return current.type === "image" ? "zoom" : false;
     },
 
-    // Clicked on the slide
-    clickSlide: "close",
+    // Clicked on the slide（默认值："close"，表示在遮罩上点击会关闭弹出层，设为 false 表示在遮罩上点击不关闭弹出层）
+    clickSlide: false,
 
     // Clicked on the background (backdrop) element;
     // if you have not changed the layout, then most likely you need to use `clickSlide` option
@@ -372,7 +373,7 @@
     lang: "en",
     i18n: {
       en: {
-        CLOSE: "Close",
+        CLOSE: "关闭",
         NEXT: "Next",
         PREV: "Previous",
         ERROR: "The requested content cannot be loaded. <br/> Please try again later.",
@@ -383,19 +384,6 @@
         DOWNLOAD: "Download",
         SHARE: "Share",
         ZOOM: "Zoom"
-      },
-      de: {
-        CLOSE: "Schlie&szlig;en",
-        NEXT: "Weiter",
-        PREV: "Zur&uuml;ck",
-        ERROR: "Die angeforderten Daten konnten nicht geladen werden. <br/> Bitte versuchen Sie es sp&auml;ter nochmal.",
-        PLAY_START: "Diaschau starten",
-        PLAY_STOP: "Diaschau beenden",
-        FULL_SCREEN: "Vollbild",
-        THUMBS: "Vorschaubilder",
-        DOWNLOAD: "Herunterladen",
-        SHARE: "Teilen",
-        ZOOM: "Vergr&ouml;&szlig;ern"
       }
     }
   };
