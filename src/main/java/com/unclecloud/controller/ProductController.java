@@ -69,7 +69,7 @@ public class ProductController {
      */
     @PostMapping("save")
     JsonResult save(@ModelAttribute("product") @Valid Product product) {
-        return jsonResultSuccess("保存成功123456！", productService.save(product));
+        return jsonResultSuccess("保存成功！", productService.save(product));
     }
 
 }

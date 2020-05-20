@@ -12,12 +12,12 @@ server:
         buffers-per-region: 1024    # 每个区分配的buffer数量 , 所以pool的大小是buffer-size * buffers-per-region
 
         accesslog:
-            enabled: true
-            dir: /Users/young/Desktop
-            pattern: common
-            prefix: UncleCloud.
-            suffix: log
-            rotate: true
+            enabled: false
+#            dir: /Users/young/Desktop
+#            pattern: common
+#            prefix: UncleCloud.
+#            suffix: log
+#            rotate: true
 
 
 
