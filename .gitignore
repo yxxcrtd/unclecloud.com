@@ -4,9 +4,13 @@
 *.iws
 *.ipr
 
+# Java
+*.class
+
+
 # Mac
 .DS_Store
-#_doc
+
 
 # Maven
 target/
