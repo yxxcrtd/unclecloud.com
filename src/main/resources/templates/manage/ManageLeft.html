@@ -3,9 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <title>后台管理</title>
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/animate.min.css" />
         <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/jquery.fancybox.3.5.7.css" />
         <script type="text/javascript" src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="${request.contextPath}/js/jquery.fancybox.3.5.7.js"></script>
+        <script type="text/javascript" src="${request.contextPath}/js/notify.js"></script>
     </head>
 
     <body>
@@ -19,10 +23,10 @@
                         <div class="manage-top-right">
                             <div class="manage-top-right-wrapper">
                                 <div class="manage-top-right-item">
-                                    <a href="javascript:;"><i class="iconfont icon-zhuji1"></i></a>
+                                    <a href="javascript:;" title="工单"><i class="iconfont icon-worksheet"></i></a>
                                 </div>
                                 <div class="manage-top-right-item">
-                                    <a href="javascript:;"><i class="iconfont icon-zhuji1"></i></a>
+                                    <a href="javascript:;" title="temp"><i class="iconfont icon-zhuji"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -34,16 +38,22 @@
                             <aside class="manage-aside">
                                 <div class="manage-menu" style="margin-bottom: 1rem;">
 
-                                    <a href="manage" class="manage-menu-item <#if ("manage" == active)>active</#if>">
+                                    <a href="manage" class="manage-menu-item <#if ('manage' == active)>active</#if>">
                                         <div class="iconfont-before"></div>
                                         <div class="menu-iconfont"><i class="iconfont icon-shili1"></i></div>
                                         <div class="menu-text">首页</div>
                                     </a>
 
-                                    <a href="instance" class="manage-menu-item <#if ("instance" == active)>active</#if>">
+                                    <a href="instance" class="manage-menu-item <#if ('instance' == active)>active</#if>">
                                         <div class="iconfont-before"></div>
                                         <div class="menu-iconfont"><i class="iconfont icon-shili1"></i></div>
                                         <div class="menu-text">我的实例</div>
+                                    </a>
+
+                                    <a href="product" class="manage-menu-item <#if ('product' == active)>active</#if>">
+                                        <div class="iconfont-before"></div>
+                                        <div class="menu-iconfont"><i class="iconfont icon-shili1"></i></div>
+                                        <div class="menu-text">我的产品</div>
                                     </a>
 
                                     <div>
@@ -62,5 +72,11 @@
                                         </a>
                                     </div>
                                 </div>
+
+                                <!-- 管理员入口 -->
+                                <div style="margin: 2rem;">
+                                    <a class="admin-manage" href="/dashboard/teams/new">进入系统管理</a>
+                                </div>
+
                             </aside>
                         </div>
