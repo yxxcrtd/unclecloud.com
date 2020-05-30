@@ -22,18 +22,27 @@
                         </div>
                         <div class="manage-top-right">
                             <div class="manage-top-right-wrapper">
-                                <div class="manage-top-right-item">
-                                    <a href="javascript:;" title="工单"><i class="iconfont icon-worksheet"></i></a>
-                                </div>
-                                <div class="manage-top-right-item">
-                                    <a href="javascript:;" title="temp"><i class="iconfont icon-zhuji"></i></a>
-                                </div>
+                                <ul id="nav">
+                                    <li class="manage-top-right-item">
+                                        <a href="javascript:;"><i class="iconfont icon-worksheet"></i></a>
+                                        <ul>
+                                            <li><a href="#">创建工单</a></li>
+                                            <li><a href="#">我的工单</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="manage-top-right-item">
+                                        <a href="javascript:;"><i class="iconfont icon-zhuji"></i></a>
+                                        <ul>
+                                            <li><a href="#">个人信息</a></li>
+                                            <li><a href="#">退出</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
                     <div style="display: flex; overflow: hidden;">
-
                         <div class="manage-left">
                             <aside class="manage-aside">
                                 <div class="manage-menu" style="margin-bottom: 1rem;">
@@ -80,3 +89,15 @@
 
                             </aside>
                         </div>
+
+<script>
+$(function() {
+    $("#nav li").hover(function() {
+        $("ul", this).slideDown(200);
+        $(this).children("a:first").addClass("hov");
+    }, function() {
+        $("ul", this).slideUp(100);
+        $(this).children("a:first").addClass("hov");
+    });
+});
+</script>
