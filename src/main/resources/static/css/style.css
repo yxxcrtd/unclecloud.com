@@ -94,11 +94,6 @@ nav ul li {
 }
 
 
-
-#section {
-    margin-top: 40px;
-}
-
 /* List 顶部 Add 的超链接 */
 .add {
 	padding: 0 0 5px 5px;
@@ -411,7 +406,7 @@ em:hover {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
 }
 .manage-right {
-	padding-top: 100px;
+	padding-top: 70px;
 	box-sizing: border-box;
 	height: 100vh;
 	overflow-y: auto;
