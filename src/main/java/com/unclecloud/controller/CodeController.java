@@ -95,31 +95,31 @@ public class CodeController {
 
         // 生成 domain
         generateFile(configuration, map, "code/Domain.html", javaFolder + "domain" + File.separator + className + ".java");
-        System.out.println("Domain 生成成功！");
+        System.out.println("\nDomain: " + className + ".java 生成成功！");
 
         // 生成 controller
         generateFile(configuration, map, "code/Controller.html", javaFolder + "controller" + File.separator + className + "Controller.java");
-        System.out.println("Controller生成成功！");
+        System.out.println("\nController: " + className + "Controller.java 生成成功！");
 
         // 生成 service
         generateFile(configuration, map, "code/Service.html", javaFolder + "service" + File.separator + className + "Service.java");
-        System.out.println("Service 生成成功！");
+        System.out.println("\nService: " + className + "Service.java 生成成功！");
 
         // 生成 serviceImpl
         generateFile(configuration, map, "code/ServiceImpl.html", javaFolder + "service/impl" + File.separator + className + "ServiceImpl.java");
-        System.out.println("ServiceImpl 生成成功！");
+        System.out.println("\nServiceImpl: " + className + "ServiceImpl.java 生成成功！");
 
         // 生成 repository
         generateFile(configuration, map, "code/Repository.html", javaFolder + "repository" + File.separator + className + "Repository.java");
-        System.out.println("Repository 生成成功！");
+        System.out.println("\nRepository: " + className + "Repository.java 生成成功！");
 
         // 生成 Template List
         generateFile(configuration, map, "code/List.html", templatesFolder + StringUtils.uncapitalize(className) + File.separator + className + "List.html");
-        System.out.println("Template List 生成成功！");
+        System.out.println("\nTemplate List: " + className + "List.html 生成成功！");
 
         // 生成 Template Edit
         generateFile(configuration, map, "code/Edit.html", templatesFolder + StringUtils.uncapitalize(className) + File.separator + className + "Edit.html");
-        System.out.println("Template Edit 生成成功！");
+        System.out.println("\nTemplate Edit: " + className + "Edit.html 生成成功！");
 
         return jsonResultSuccess("SUCCESS", null);
     }
@@ -180,21 +180,6 @@ public class CodeController {
     // 测试首字母大小写
     public static void main(String[] args) {
         System.out.println(getClassName("t_instance"));
-    }
-
-    public static void getDir(String path) throws Exception {
-        File file = new File(path);
-        if (file.isDirectory()) {
-            System.out.println("文件夹：" + file.getPath());
-            File[] fileArr = file.listFiles();
-            for (File f : fileArr) {
-                getDir(f.getPath());
-            }
-        } else if (file.isFile()) {
-            System.out.println("文件：" + file.getPath());
-        } else {
-            throw new Exception(file.getPath() + "非Dir非File?!");
-        }
     }
 
 }
