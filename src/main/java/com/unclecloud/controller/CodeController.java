@@ -36,12 +36,18 @@ public class CodeController {
     @Autowired
     Configuration configuration;
 
-    private @Value("${spring.datasource.driver-class-name}") String driverClassName;
-    private @Value("${spring.datasource.url}") String url;
-    private @Value("${spring.datasource.username}") String username;
-    private @Value("${spring.datasource.password}") String password;
-    private @Value("${code.folder.java}") String javaFolder;
-    private @Value("${code.folder.templates}") String templatesFolder;
+    private @Value("${spring.datasource.driver-class-name}")
+    String driverClassName;
+    private @Value("${spring.datasource.url}")
+    String url;
+    private @Value("${spring.datasource.username}")
+    String username;
+    private @Value("${spring.datasource.password}")
+    String password;
+    private @Value("${code.folder.java}")
+    String javaFolder;
+    private @Value("${code.folder.templates}")
+    String templatesFolder;
 
     /**
      * Generate Code
@@ -162,17 +168,33 @@ public class CodeController {
      * 根据表名生成类名
      *
      * @param tableName 表名
-     * @return
      */
     private static String getClassName(String tableName) {
-        String result = "";
-        result = tableName.substring(2);
-        return StringUtils.capitalize(result); // 将首字母大写
+        if (tableName.contains("_")) {
+            int index = tableName.indexOf("_");
+            return getClassName(tableName.substring(0, index) + StringUtils.capitalize(tableName.substring(index + 1, tableName.length())));
+        }
+        return StringUtils.capitalize(tableName.substring(1)); // 将首字母大写
     }
 
     // 测试首字母大小写
     public static void main(String[] args) {
         System.out.println(getClassName("t_instance"));
+    }
+
+    public static void getDir(String path) throws Exception {
+        File file = new File(path);
+        if (file.isDirectory()) {
+            System.out.println("文件夹：" + file.getPath());
+            File[] fileArr = file.listFiles();
+            for (File f : fileArr) {
+                getDir(f.getPath());
+            }
+        } else if (file.isFile()) {
+            System.out.println("文件：" + file.getPath());
+        } else {
+            throw new Exception(file.getPath() + "非Dir非File?!");
+        }
     }
 
 }

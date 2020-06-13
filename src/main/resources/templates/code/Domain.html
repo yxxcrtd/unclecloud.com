@@ -3,6 +3,14 @@ package com.unclecloud.domain;
 import lombok.Data;
 
 import javax.persistence.Entity;
+<#if fields?? && 0 < fields?size>
+<#list fields as f>
+<#if ("id" == f.fieldName)>
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+</#if>
+</#list>
+</#if>
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -20,7 +28,7 @@ public class ${className} implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     </#if>
     private ${f.fieldType!} ${f.fieldName!}<#if ("Date" == f.fieldType)> = new Date()</#if>;
+
 </#list>
 </#if>
-
 }
