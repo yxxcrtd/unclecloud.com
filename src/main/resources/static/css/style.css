@@ -15,7 +15,6 @@ a {
     cursor: pointer;
 }
 a:hover, .active {
-    color: #fff;
     font-weight: 600;
     text-decoration: none;
 }
@@ -375,13 +374,13 @@ em:hover {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
-    background-color: #1C2022;
 }
 .wrapper-body-manage {
 	height: 100%;
     width: 100%;
-    color: rgba(255, 255, 255, 0.8);
 }
+
+/* 后台顶部的 logo 和 最右边的几个图标 */
 .manage-top {
 	display: flex;
 	flex-direction: row;
@@ -393,30 +392,12 @@ em:hover {
 	left: 0px;
 	top: 0px;
 	right: 0px;
-    padding-top: 1rem;
 }
 
-/* 后台管理框架部分 */
-.manage-left {
-	display: flex;
-    box-sizing: border-box;
-    height: 100vh; /* 1个vh相当于当前屏幕可见高度的1%，也就是说：height:100vh == height:100%; vw 同理 */
-    background-color: #24282A;
-    padding-top: 90px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
-}
-.manage-right {
-	padding-top: 70px;
-	box-sizing: border-box;
-	height: 100vh;
-	overflow-y: auto;
-	width: 100%;
-}
 .manage-logo {
 	display: flex;
 	width: 200px;
     height: 50px;
-    margin-left: 1rem;
 	flex-direction: row;
 	-webkit-box-pack: start;
 	justify-content: flex-start;
@@ -444,6 +425,26 @@ em:hover {
     float: left;
 	margin-right: 2rem;
 }
+
+/* 后台管理框架部分 */
+.manage-left {
+	display: flex;
+    box-sizing: border-box;
+    height: 100vh; /* 1个vh相当于当前屏幕可见高度的1%，也就是说：height:100vh == height:100%; vw 同理 */
+    background-color: #24282A;
+    padding-top: 90px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
+}
+.manage-right {
+	padding-top: 70px;
+	box-sizing: border-box;
+	height: 100vh;
+	overflow-y: auto;
+	width: 100%;
+}
+
+
+
 #nav ul {
 	position: absolute;
 	display: none;
@@ -476,6 +477,10 @@ em:hover {
 .manage-menu {
     width: 100%;
 	margin-top: 0.5rem;
+}
+/* 左边的菜单鼠标移上颜色变白色 */
+.manage-menu a:hover {
+    color: #FFF;
 }
 .manage-menu-item {
 	transition-duration: 0.3s;
@@ -583,7 +588,6 @@ em:hover {
     background-size: 720%;
     border-top-width: 2px;
     border-right-width: 2px;
-    /*border-bottom-width: 2px;*/
     border-left-width: 2px;
     border-top-style: solid;
     border-right-style: solid;
@@ -629,7 +633,6 @@ em:hover {
 
 /* 重写 iconfont 图标样式 */
 .icon-shili1, .icon-shili3, .icon-zhuji, .icon-worksheet {
-	color: #fff;
 	font-size: 18px !important;
 	font-weight: bold;
 }
