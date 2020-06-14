@@ -36,12 +36,18 @@ public class CodeController {
     @Autowired
     Configuration configuration;
 
-    private @Value("${spring.datasource.driver-class-name}") String driverClassName;
-    private @Value("${spring.datasource.url}") String url;
-    private @Value("${spring.datasource.username}") String username;
-    private @Value("${spring.datasource.password}") String password;
-    private @Value("${code.folder.java}") String javaFolder;
-    private @Value("${code.folder.templates}") String templatesFolder;
+    private @Value("${spring.datasource.driver-class-name}")
+    String driverClassName;
+    private @Value("${spring.datasource.url}")
+    String url;
+    private @Value("${spring.datasource.username}")
+    String username;
+    private @Value("${spring.datasource.password}")
+    String password;
+    private @Value("${code.folder.java}")
+    String javaFolder;
+    private @Value("${code.folder.templates}")
+    String templatesFolder;
 
     /**
      * Generate Code
@@ -89,31 +95,31 @@ public class CodeController {
 
         // 生成 domain
         generateFile(configuration, map, "code/Domain.html", javaFolder + "domain" + File.separator + className + ".java");
-        System.out.println("Domain 生成成功！");
+        System.out.println("\nDomain: " + className + ".java 生成成功！");
 
         // 生成 controller
         generateFile(configuration, map, "code/Controller.html", javaFolder + "controller" + File.separator + className + "Controller.java");
-        System.out.println("Controller生成成功！");
+        System.out.println("\nController: " + className + "Controller.java 生成成功！");
 
         // 生成 service
         generateFile(configuration, map, "code/Service.html", javaFolder + "service" + File.separator + className + "Service.java");
-        System.out.println("Service 生成成功！");
+        System.out.println("\nService: " + className + "Service.java 生成成功！");
 
         // 生成 serviceImpl
         generateFile(configuration, map, "code/ServiceImpl.html", javaFolder + "service/impl" + File.separator + className + "ServiceImpl.java");
-        System.out.println("ServiceImpl 生成成功！");
+        System.out.println("\nServiceImpl: " + className + "ServiceImpl.java 生成成功！");
 
         // 生成 repository
         generateFile(configuration, map, "code/Repository.html", javaFolder + "repository" + File.separator + className + "Repository.java");
-        System.out.println("Repository 生成成功！");
+        System.out.println("\nRepository: " + className + "Repository.java 生成成功！");
 
         // 生成 Template List
         generateFile(configuration, map, "code/List.html", templatesFolder + StringUtils.uncapitalize(className) + File.separator + className + "List.html");
-        System.out.println("Template List 生成成功！");
+        System.out.println("\nTemplate List: " + className + "List.html 生成成功！");
 
         // 生成 Template Edit
         generateFile(configuration, map, "code/Edit.html", templatesFolder + StringUtils.uncapitalize(className) + File.separator + className + "Edit.html");
-        System.out.println("Template Edit 生成成功！");
+        System.out.println("\nTemplate Edit: " + className + "Edit.html 生成成功！");
 
         return jsonResultSuccess("SUCCESS", null);
     }
@@ -162,14 +168,16 @@ public class CodeController {
      * 根据表名生成类名
      *
      * @param tableName 表名
-     * @return
      */
     private static String getClassName(String tableName) {
-        String result = "";
-        result = tableName.substring(2);
-        return StringUtils.capitalize(result); // 将首字母大写
+        if (tableName.contains("_")) {
+            int index = tableName.indexOf("_");
+            return getClassName(tableName.substring(0, index) + StringUtils.capitalize(tableName.substring(index + 1, tableName.length())));
+        }
+        return StringUtils.capitalize(tableName.substring(1)); // 将首字母大写
     }
 
+    // 测试首字母大小写
     public static void main(String[] args) {
         System.out.println(getClassName("t_instance"));
     }

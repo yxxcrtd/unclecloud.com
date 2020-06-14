@@ -1,3 +1,8 @@
+
+
+
+
+
 <div class="animated-modal" style="width: 33%;">
     <h2 class="header">修改 XX</h2>
 
@@ -60,7 +65,7 @@ $("#objSubmit").click(function() {
     objFormData.append("sequence", sequenceValue);
     $.ajax({
         type: "POST",
-        url: "/instance/save",
+        url: "/worksheet_reply/save",
         data: objFormData,
         processData: false, // 告诉jquery不要处理发送的数据
         contentType: false, // 告诉jquery不要设置Content-Type请求头

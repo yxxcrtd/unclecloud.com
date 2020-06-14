@@ -1,10 +1,5 @@
-
-
-
-
-
 <div class="animated-modal" style="width: 33%;">
-    <h2 class="header">修改 XX</h2>
+    <div class="header">修改XX</div>
 
     <div style="padding-left: 0;">
         <div class="card">
@@ -53,7 +48,7 @@ $("#objSubmit").click(function() {
         success: function(objData) {
             if (200 == objData.code) {
                 $.fancybox.close();
-                $.notify({ message: objData.message }, { type: "success" });
+                $.notify({ message: objData.message });
             }
         }
     });
