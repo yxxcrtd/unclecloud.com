@@ -1,38 +1,26 @@
-<#include "top.html" />
+<#include "manage/ManageLeft.html" />
 
-
-
-
+<div class="manage-right">
+    <div class="manage-right-content">
 
         <div id="section">
             <div class="add">
-                <a href="javascript:;" data-fancybox data-type="ajax" data-src="${request.contextPath}/${className?uncap_first}/edit/0">
+                <a href="javascript:;" data-fancybox data-type="ajax" data-src="/instance/edit/0">
                     添加 XX <span class="size_22">+</span>
                 </a>
             </div>
 
             <table class="table">
                 <thead>
-                    <th>id</th>
-                    <th><@compress single_line=true><@getNameByObj active /></@compress>名称</th>
-                    <th>排序</th>
-                    <th>操作</th>
+                <th>id</th>
+                <th>名称</th>
+                <th>排序</th>
+                <th>操作</th>
                 </thead>
                 <tbody>
-                    <#if (list?? && 0 < list?size)>
-                        <#list list as l>
-                            <tr id="tr${l.id}">
-                                <td>${l.id}</td>
-                                <td>${l.name}</td>
-                                <td>${l.sequence}</td>
-                                <td><a href="javascript:;" data-fancybox data-type="ajax" data-src="${request.contextPath}/${className?uncap_first}/edit/${l.id}" title="${l.name}">修改</a></td>
-                            </tr>
-                        </#list>
-                    <#else>
-                        "Nothing"
-                    </#if>
+                "Nothing"
                 </tbody>
             </table>
         </div>
-    </body>
-</html>
+
+        <#include "manage/ManageBottom.html" />

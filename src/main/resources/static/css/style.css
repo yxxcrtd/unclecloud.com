@@ -93,11 +93,11 @@ nav ul li {
 }
 
 
-/* List 顶部 Add 的超链接 */
+/* List 顶部 Add 的超链接
 .add {
 	padding: 0 0 5px 5px;
 }
-
+*/
 
 
 
@@ -436,7 +436,7 @@ em:hover {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
 }
 .manage-right {
-	padding-top: 70px;
+	padding-top: 50px;
 	box-sizing: border-box;
 	height: 100vh;
 	overflow-y: auto;
@@ -549,7 +549,7 @@ em:hover {
 	width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding-left: 2rem;
+    padding-left: 1rem;
 }
 .manage-content-title {
 	position: relative;
@@ -644,12 +644,18 @@ em:hover {
     padding: 0 !important;
     border-radius: 0 !important;
 }
-.header {
+.fancybox-header {
     font-size: 16px;
     color: #FFF;
     height: 40px;
     line-height: 40px;
     padding-left: 10px;
-    background-color: #40A9F3;
+    background-color: #24282A;
+}
+.fancybox-close-small {
+    color: #FFF !important;
+}
+.fancybox-body {
+    padding: 10px 20px 30px 15px;
 }
 
