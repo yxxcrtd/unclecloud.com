@@ -78,11 +78,6 @@ nav ul li {
 
 
 
-
-/* 发布文章的 textarea 中的文字大小 */
-.size_20 {
-	font-size: 20px !important;
-}
 /* 新增 + 的文字大小 */
 .size_22 {
 	font-size: 22px;
@@ -617,7 +612,6 @@ em:hover {
     box-sizing: border-box;
     text-align: center;
     color: #FFF;
-    /*width: 100%;*/
     -webkit-user-select: none;
     text-decoration-line: none;
     text-decoration-style: initial;
@@ -627,10 +621,10 @@ em:hover {
     overflow-y: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding-top: 0.5em;
-    padding-bottom: 0.3em;
-    font-size: 0.875em;
+    padding: 0.5em 2em 0.4em 2em;
+    font-size: 0.9em;
     cursor: pointer;
+    margin-top: 1em;
 }
 .admin-manage:hover, .admin-manage:focus {
     background-color: rgb(102, 185, 244);
@@ -667,6 +661,6 @@ em:hover {
     color: #FFF !important;
 }
 .fancybox-body {
-    padding: 10px 20px 30px 15px;
+    padding: 10px 20px 10px 15px;
 }
 
