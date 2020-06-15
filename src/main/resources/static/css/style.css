@@ -35,6 +35,12 @@ h2, ul {
 .red {
 	color: #f00 !important;
 }
+/* 红色星号，必填项 */
+.redStar {
+    color: #FF0000;
+    /*font-size: 16px;*/
+}
+
 
 
 
@@ -72,15 +78,6 @@ nav ul li {
 
 
 
-
-/* 发布文章的 textarea 中的文字大小 */
-.size_20 {
-	font-size: 20px !important;
-}
-/* 新增 + 的文字大小 */
-.size_22 {
-	font-size: 22px;
-}
 
 .center {
     text-align: center;
@@ -442,6 +439,11 @@ em:hover {
 	overflow-y: auto;
 	width: 100%;
 }
+/* 超链接访问后的样式 TODO */
+.manage-right a:visited {
+    /*text-decoration: none !important;*/
+    color: #f00;
+}
 
 
 
@@ -574,7 +576,7 @@ em:hover {
     align-items: center;
 }
 
-.admin-manage {
+.form_button {
     display: block;
     transition-duration: 0.3s;
     transition-timing-function: ease;
@@ -606,7 +608,7 @@ em:hover {
     box-sizing: border-box;
     text-align: center;
     color: #FFF;
-    width: 100%;
+    /*width: 100%;*/
     -webkit-user-select: none;
     text-decoration-line: none;
     text-decoration-style: initial;

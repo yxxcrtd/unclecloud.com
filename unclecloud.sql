@@ -46,7 +46,8 @@ CREATE TABLE t_worksheet (
     id                  serial                  not null,                               -- 工单的主键ID
     user_id             int                     not null,                               -- 工单的创建用户ID
     title               varchar(256)            not null,                               -- 工单标题
-    describe            varchar(1024)           not null,                               -- 工单描述
+    describe            varchar(1024)           null,                                   -- 工单描述
+    file                varchar(22)             null,                                   -- 工单附件
     status              int2                    not null default 0,                     -- 工单状态（0：待处理；1：处理中；2：已完成；）
     create_time         timestamptz             not null default now(),                 -- 创建时间
     CONSTRAINT pk_t_worksheet PRIMARY KEY (id)
