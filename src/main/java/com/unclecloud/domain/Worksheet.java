@@ -25,6 +25,8 @@ public class Worksheet implements Serializable {
 
     private String describe;
 
+    private String file;
+
     private Integer status;
 
     private Date createTime = new Date();
