@@ -19,8 +19,6 @@ server:
 #            suffix: log
 #            rotate: true
 
-
-
 spring:
     http:
         multipart:
@@ -29,8 +27,8 @@ spring:
 
     servlet:
         multipart:
-            max-file-size: -1 # 格式：10MB。单个文件的大小限制，-1 表示文件大小不受限制
-            max-request-size: -1 # 整个请求的最大值
+            max-file-size: 2MB # （2097152字节）格式：10MB。单个文件的大小限制，-1 表示文件大小不受限制
+            max-request-size: 10MB # 整个请求的最大值
 
 
     mvc:
@@ -60,12 +58,12 @@ spring:
         # Hikari CP 连接池配置
         hikari:
             pool-name: Home_HikariCP
-            minimum-idle: 10 # 最小空闲连接数量
-            maximum-pool-size: 30 # 连接池中允许的最大连接数，默认值是：10
+            minimum-idle: 5 # 最小空闲连接数量
+            maximum-pool-size: 10 # 连接池中允许的最大连接数，默认值是：10
             auto-commit: true # 此属性控制从池返回的连接的默认自动提交行为，默认值：true
             idle-timeout: 60000 # 空闲连接存活最大时间，默认值：600000（10分钟）（单位：毫秒）
             max-lifetime: 120000 # 池中连接最长生命周期。默认为1800000，如果不等于0且小于30秒则会被重置回30分钟
-            connection-timeout: 60000 # 数据库连接超时时间，默认30秒，即30000（单位：毫秒）
+            connection-timeout: 300000 # 数据库连接超时时间，默认30秒，即30000（单位：毫秒）
             connection-test-query: select version() # 验证 Postgres 连接有效与否的SQL（注意：每个数据库不一样）
 
 

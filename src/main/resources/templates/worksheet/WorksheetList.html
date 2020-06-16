@@ -13,12 +13,22 @@
             <table class="table">
                 <thead>
                 <th>id</th>
-                <th>名称</th>
-                <th>排序</th>
+                <th>标题</th>
+                <th>描述</th>
+                <th>创建时间</th>
                 <th>操作</th>
                 </thead>
                 <tbody>
-                "Nothing"
+                <#if (list?? && 0 < list?size)>
+                    <#list list as l>
+                        <tr id="tr${l.id}">
+                            <td>${l.id}</td>
+                            <td>${l.title}</td>
+                            <td>${l.describe}</td>
+                            <td>${l.createTime}</td>
+                        </tr>
+                    </#list>
+                </#if>
                 </tbody>
             </table>
         </div>

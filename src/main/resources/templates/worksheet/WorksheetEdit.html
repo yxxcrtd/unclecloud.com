@@ -9,7 +9,7 @@
                         <div>
                             <label>标题：<span class="redStar">*</span></label>
                             <@s.formInput "obj.title" "class='form-control' maxLength='20' placeholder='请输入名称'" />
-                            <span id="nameTip" class="blink"></span>
+                            <span id="titleTip" class="blink"></span>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                 <div>
                     <div>
                         <div>
-                            <label>附件：</label>
+                            <label>附件：<span class="tips">(文件大小不能超过2M)</span></label>
                             <input type="file" id="file" name="file" class="form-control">
                         </div>
                     </div>
@@ -42,27 +42,35 @@ $("#objSubmit").click(function() {
     $(this).attr("disabled", "true");
     setTimeout("$('#objSubmit').removeAttr('disabled')", 3000); // 三秒后显示提交按钮
 
-    var nameNode = $("#name");
-    var nameValue = $.trim(nameNode.val());
-    if ("" == nameValue) {
-        $("#nameTip").html("请输入分类名称！");
-        nameNode.focus();
+    // 工单标题
+    var titleNode = $("#title");
+    var titleValue = $.trim(titleNode.val());
+    if ("" == titleValue) {
+        $("#titleTip").html("请输入标题！");
+        titleNode.focus();
         return false;
     }
 
-    var sequenceNode = $("#sequence");
-    var sequenceValue = $.trim(sequenceNode.val());
-    if ("" == sequenceValue) {
-        $("#sequenceTip").html("请输入分类排序！");
-        sequenceNode.focus();
-        return false;
-    }
+    // 工单描述
+    var describeNode = $("#describe");
+    var describeValue = $.trim(describeNode.val());
 
-    var objId = ;
+    var objId = ${obj.id};
     var objFormData = new FormData();
     objFormData.append("id", objId);
-    objFormData.append("name", nameValue);
-    objFormData.append("sequence", sequenceValue);
+    objFormData.append("title", titleValue);
+
+    // 如果没有写描述，不让数据库为空，而是灰色的NULL
+    if ("" != describeValue) {
+        objFormData.append("describe", describeValue);
+    }
+
+    // 在不选文件的情况下，不让数据库插入：undefined
+    var file = $("#file")[0].files[0];
+    if (file != undefined && 0 < file.size) {
+        objFormData.append("file", file);
+    }
+
     $.ajax({
         type: "POST",
         url: "/worksheet/save",
@@ -72,17 +80,16 @@ $("#objSubmit").click(function() {
         success: function(objData) {
             if (200 == objData.code) {
                 $.fancybox.close();
-                $.notify({ message: objData.message }, { type: "success" });
-                var cData = objData.data;
-                var updateString = "<a href=\"javascript:;\" data-fancybox data-type=\"ajax\" data-src=\"/obj/sub/edit/" + cData.id + "/" + cData.parentId + "\" title=\"修改\">修改</a>";
-                var scriptString = "<script>$(\"#deleteSubCategory" + cData.id + "\").click(function() { $.fancyConfirm({ title : \"删除子分类\", message : \"您确定要删除当前子分类吗？\", okButton  : \"确 定\", noButton  : \"取 消\", callback  : function (value) { if (value) { $.get(\"/obj/delete/" + cData.id + "\", function(data) { if (200 == data.code) { $.notify({ message: data.message }, { type: \"success\" }); $(\"#tr" + cData.id + "\").remove(); } }); } } }); });<\/script>";
-                var newRow = "<tr id=\"tr" + cData.id + "\">  <td>" + cData.id + "</td><td>" + cData.name + "</td><td>" + updateString + "&nbsp;&nbsp;"+ scriptString + "</td></tr>";
+                $.notify({ message: objData.message });
                 if (0 == objId) { // 新增操作
                     $("#tr0").remove();
                 } else {
                     $("#tr" + cData.id).after(newRow);
                     $("#tr" + cData.id).remove();
                 }
+            }
+            if (-200 == objData.code) {
+                $.notify({ message: objData.message }, { type: "warning" });
             }
         }
     });
