@@ -24,14 +24,14 @@ import java.util.List;
 
 import static com.unclecloud.util.FileUtil.uploadFile;
 import static com.unclecloud.util.JsonResult.jsonResultSuccess;
-import static org.springframework.data.domain.Sort.Direction.DESC;
+import static org.springframework.data.domain.Sort.Direction.ASC;
 
 /**
  * Worksheet Controller
  */
 @Slf4j
 @RestController
-@RequestMapping("worksheet")
+@RequestMapping("manage/worksheet")
 public class WorksheetController {
 
     @Autowired
@@ -45,7 +45,7 @@ public class WorksheetController {
     @GetMapping("")
     ModelAndView list() {
         ModelAndView mav = new ModelAndView();
-        Sort sort = Sort.by(new Sort.Order(DESC, "createTime"));
+        Sort sort = Sort.by(new Sort.Order(ASC, "status"));
         List<Worksheet> list = worksheetService.findAll(sort);
         mav.addObject("list", list);
         mav.addObject("count", list.size());

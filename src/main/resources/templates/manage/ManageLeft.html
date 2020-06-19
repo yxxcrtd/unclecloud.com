@@ -1,3 +1,4 @@
+<#include "obj.html" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +19,7 @@
                 <div class="wrapper-body-manage">
                     <div class="manage-top">
                         <div class="manage-logo">
-                            <a href="/" target="_blank"><img src="images/logo.png" /></a>
+                            <a href="/" target="_blank"><img src="/images/logo.png" /></a>
                         </div>
                         <div class="manage-top-right">
                             <div class="manage-top-right-wrapper">
@@ -27,7 +28,7 @@
                                         <a href="javascript:;"><i class="iconfont icon-worksheet"></i></a>
                                         <ul>
                                             <li><a href="#">创建工单</a></li>
-                                            <li><a href="worksheet">我的工单</a></li>
+                                            <li><a href="manage/worksheet">我的工单</a></li>
                                         </ul>
                                     </li>
                                     <li class="manage-top-right-item">
@@ -53,7 +54,7 @@
                                         <div class="menu-text">首页</div>
                                     </a>
 
-                                    <a href="worksheet" class="manage-menu-item <#if ('worksheet' == active)>active</#if>">
+                                    <a href="manage/worksheet" class="manage-menu-item <#if ('worksheet' == active)>active</#if>">
                                         <div class="iconfont-before"></div>
                                         <div class="menu-iconfont"><i class="iconfont icon-shili1"></i></div>
                                         <div class="menu-text">我的工单</div>

@@ -32,8 +32,20 @@ h2, ul {
     padding: 0;
 }
 
+.center {
+    text-align: center;
+}
+.grey {
+	color: #9a9a9a;
+}
 .red {
 	color: #f00 !important;
+}
+.green {
+	color: #0F0 !important;
+}
+.yellow {
+	color: #F5C414 !important;
 }
 /* 红色星号，必填项 */
 .redStar {
@@ -44,6 +56,12 @@ h2, ul {
 	color: #9a9a9a;
 	font-weight: normal !important;
 	font-size: 12px !important;
+}
+/* 页面中显示 textarea */
+.pre-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 
@@ -87,23 +105,6 @@ nav ul li {
 .size_22 {
 	font-size: 22px;
 }
-
-.center {
-    text-align: center;
-}
-.grey {
-	color: #9a9a9a;
-}
-.red {
-	color: #f00 !important;
-}
-
-
-/* List 顶部 Add 的超链接
-.add {
-	padding: 0 0 5px 5px;
-}
-*/
 
 
 
@@ -195,19 +196,37 @@ nav ul li {
 	color: #333333 !important;
 }
 
+
+/* 表格样式 */
 .table {
     width: 100%;
     border: none;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+.table thead {
+    background-color: #F9F9F9;
 }
 
 .table > thead > tr > th, .table > tbody > tr > td {
 	vertical-align: middle;
+	padding: 10px;
 }
 
 .table > thead > tr > th {
 	color: #9A9A9A;
 	text-align: left;
 	padding-bottom: 5px;
+	font-weight: 400 !important;
+}
+
+.table th, .table td {
+    border-bottom: 1px solid #e4ebf1;
+}
+
+/* 鼠标移上当前行变色 */
+.table-hover > tbody > tr:hover {
+    background-color: #F9F9F9;
 }
 
 
@@ -396,12 +415,22 @@ em:hover {
 	left: 0px;
 	top: 0px;
 	right: 0px;
+
+    /* 固定顶部 */
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0; /* 控制 position: fixed不居中 */
+    right: 0; /* 控制 position: fixed不居中 */
+    box-shadow: 0 0 5px 0 rgba(114, 144, 180, .8);
+    background-color: #f0f0f0;
 }
 
 .manage-logo {
+    background-color: #3C3C3C;
 	display: flex;
-	width: 200px;
-    height: 50px;
+	width: 255px;
+    height: 55px;
 	flex-direction: row;
 	-webkit-box-pack: start;
 	justify-content: flex-start;
@@ -410,6 +439,8 @@ em:hover {
 	position: relative;
 	z-index: 10;
 }
+
+
 .manage-top-right {
 	display: flex;
 	flex-direction: row;
@@ -436,7 +467,7 @@ em:hover {
     box-sizing: border-box;
     height: 100vh; /* 1个vh相当于当前屏幕可见高度的1%，也就是说：height:100vh == height:100%; vw 同理 */
     background-color: #24282A;
-    padding-top: 90px;
+    padding-top: 60px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
 }
 .manage-right {
@@ -445,6 +476,7 @@ em:hover {
 	height: 100vh;
 	overflow-y: auto;
 	width: 100%;
+	background-color: #EEE;
 }
 /* 超链接访问后的样式 TODO */
 .manage-right a:visited {
@@ -491,6 +523,15 @@ em:hover {
 .manage-menu a:hover {
     color: #FFF;
 }
+
+
+/* List 顶部 Add 的超链接 */
+.add {
+	padding: 5px 0;
+	margin: 20px 0;
+	background-color: #40A9F3;
+}
+
 .manage-menu-item {
 	transition-duration: 0.3s;
 	transition-timing-function: ease;
@@ -514,7 +555,7 @@ em:hover {
 	color: white;
 }
 .active {
-	background-color: rgb(64, 169, 243);
+	background-color: #40A9F3;
 }
 .manage-menu-item-a {
 	transition-duration: 0.3s;
@@ -555,10 +596,12 @@ em:hover {
 }
 
 .manage-right-content {
-	width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    padding-left: 1rem;
+
+
+    padding: 1px 20px 10px 20px;
+    margin: 15px;
+    border-radius: 5px;
+	background-color: #FFF;
 }
 .manage-content-title {
 	position: relative;
