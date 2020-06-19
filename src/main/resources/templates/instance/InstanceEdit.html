@@ -67,7 +67,7 @@ $("#objSubmit").click(function() {
         success: function(objData) {
             if (200 == objData.code) {
                 $.fancybox.close();
-                $.notify({ message: objData.message }, { type: "success" });
+                $.notify({ message: objData.message });
                 var cData = objData.data;
                 var updateString = "<a href=\"javascript:;\" data-fancybox data-type=\"ajax\" data-src=\"/obj/sub/edit/" + cData.id + "/" + cData.parentId + "\" title=\"修改\">修改</a>";
                 var scriptString = "<script>$(\"#deleteSubCategory" + cData.id + "\").click(function() { $.fancyConfirm({ title : \"删除子分类\", message : \"您确定要删除当前子分类吗？\", okButton  : \"确 定\", noButton  : \"取 消\", callback  : function (value) { if (value) { $.get(\"/obj/delete/" + cData.id + "\", function(data) { if (200 == data.code) { $.notify({ message: data.message }, { type: \"success\" }); $(\"#tr" + cData.id + "\").remove(); } }); } } }); });<\/script>";

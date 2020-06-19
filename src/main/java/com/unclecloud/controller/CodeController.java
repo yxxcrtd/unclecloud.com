@@ -36,18 +36,12 @@ public class CodeController {
     @Autowired
     Configuration configuration;
 
-    private @Value("${spring.datasource.driver-class-name}")
-    String driverClassName;
-    private @Value("${spring.datasource.url}")
-    String url;
-    private @Value("${spring.datasource.username}")
-    String username;
-    private @Value("${spring.datasource.password}")
-    String password;
-    private @Value("${code.folder.java}")
-    String javaFolder;
-    private @Value("${code.folder.templates}")
-    String templatesFolder;
+    private @Value("${spring.datasource.driver-class-name}") String driverClassName;
+    private @Value("${spring.datasource.url}") String url;
+    private @Value("${spring.datasource.username}") String username;
+    private @Value("${spring.datasource.password}") String password;
+    private @Value("${code.folder.java}") String javaFolder;
+    private @Value("${code.folder.templates}") String templatesFolder;
 
     /**
      * Generate Code

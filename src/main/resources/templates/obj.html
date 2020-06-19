@@ -8,3 +8,13 @@
 		</#if>
 	</#if>
 </#macro>
+
+<#macro getWorksheetStatus obj>
+	<#if obj??>
+		<#if (0 == obj)><span class="red">待处理</span>
+			<#elseif (1 == obj)><span class="green">处理中</span>
+			<#elseif (2 == obj)>已完成
+			<#else><span class="blink">Ops!</span>
+		</#if>
+	</#if>
+</#macro>

@@ -15,7 +15,6 @@ a {
     cursor: pointer;
 }
 a:hover, .active {
-    color: #fff;
     font-weight: 600;
     text-decoration: none;
 }
@@ -33,9 +32,38 @@ h2, ul {
     padding: 0;
 }
 
+.center {
+    text-align: center;
+}
+.grey {
+	color: #9a9a9a;
+}
 .red {
 	color: #f00 !important;
 }
+.green {
+	color: #0F0 !important;
+}
+.yellow {
+	color: #F5C414 !important;
+}
+/* 红色星号，必填项 */
+.redStar {
+    color: #FF0000;
+    /*font-size: 16px;*/
+}
+.tips {
+	color: #9a9a9a;
+	font-weight: normal !important;
+	font-size: 12px !important;
+}
+/* 页面中显示 textarea */
+.pre-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
 
 
 
@@ -73,32 +101,10 @@ nav ul li {
 
 
 
-
-/* 发布文章的 textarea 中的文字大小 */
-.size_20 {
-	font-size: 20px !important;
-}
 /* 新增 + 的文字大小 */
 .size_22 {
 	font-size: 22px;
 }
-
-.center {
-    text-align: center;
-}
-.grey {
-	color: #9a9a9a;
-}
-.red {
-	color: #f00 !important;
-}
-
-
-/* List 顶部 Add 的超链接 */
-.add {
-	padding: 0 0 5px 5px;
-}
-
 
 
 
@@ -190,19 +196,37 @@ nav ul li {
 	color: #333333 !important;
 }
 
+
+/* 表格样式 */
 .table {
     width: 100%;
     border: none;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+.table thead {
+    background-color: #F9F9F9;
 }
 
 .table > thead > tr > th, .table > tbody > tr > td {
 	vertical-align: middle;
+	padding: 10px;
 }
 
 .table > thead > tr > th {
 	color: #9A9A9A;
 	text-align: left;
 	padding-bottom: 5px;
+	font-weight: 400 !important;
+}
+
+.table th, .table td {
+    border-bottom: 1px solid #e4ebf1;
+}
+
+/* 鼠标移上当前行变色 */
+.table-hover > tbody > tr:hover {
+    background-color: #F9F9F9;
 }
 
 
@@ -247,8 +271,6 @@ button.close {
 	border-radius: 0;
 	color: #FFF;
 	padding: 10px 15px !important;
-/*	font-size: 14px;
-	font-weight: bold;*/
 }
 .container .alert {
 	border-radius: 4px;
@@ -375,13 +397,13 @@ em:hover {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
-    background-color: #1C2022;
 }
 .wrapper-body-manage {
 	height: 100%;
     width: 100%;
-    color: rgba(255, 255, 255, 0.8);
 }
+
+/* 后台顶部的 logo 和 最右边的几个图标 */
 .manage-top {
 	display: flex;
 	flex-direction: row;
@@ -393,30 +415,22 @@ em:hover {
 	left: 0px;
 	top: 0px;
 	right: 0px;
-    padding-top: 1rem;
+
+    /* 固定顶部 */
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0; /* 控制 position: fixed不居中 */
+    right: 0; /* 控制 position: fixed不居中 */
+    box-shadow: 0 0 5px 0 rgba(114, 144, 180, .8);
+    background-color: #f0f0f0;
 }
 
-/* 后台管理框架部分 */
-.manage-left {
-	display: flex;
-    box-sizing: border-box;
-    height: 100vh; /* 1个vh相当于当前屏幕可见高度的1%，也就是说：height:100vh == height:100%; vw 同理 */
-    background-color: #24282A;
-    padding-top: 90px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
-}
-.manage-right {
-	padding-top: 70px;
-	box-sizing: border-box;
-	height: 100vh;
-	overflow-y: auto;
-	width: 100%;
-}
 .manage-logo {
+    background-color: #3C3C3C;
 	display: flex;
-	width: 200px;
-    height: 50px;
-    margin-left: 1rem;
+	width: 255px;
+    height: 55px;
 	flex-direction: row;
 	-webkit-box-pack: start;
 	justify-content: flex-start;
@@ -425,6 +439,8 @@ em:hover {
 	position: relative;
 	z-index: 10;
 }
+
+
 .manage-top-right {
 	display: flex;
 	flex-direction: row;
@@ -444,6 +460,32 @@ em:hover {
     float: left;
 	margin-right: 2rem;
 }
+
+/* 后台管理框架部分 */
+.manage-left {
+	display: flex;
+    box-sizing: border-box;
+    height: 100vh; /* 1个vh相当于当前屏幕可见高度的1%，也就是说：height:100vh == height:100%; vw 同理 */
+    background-color: #24282A;
+    padding-top: 60px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 3px;
+}
+.manage-right {
+	padding-top: 50px;
+	box-sizing: border-box;
+	height: 100vh;
+	overflow-y: auto;
+	width: 100%;
+	background-color: #EEE;
+}
+/* 超链接访问后的样式 TODO */
+.manage-right a:visited {
+    /*text-decoration: none !important;*/
+    color: #f00;
+}
+
+
+
 #nav ul {
 	position: absolute;
 	display: none;
@@ -477,6 +519,19 @@ em:hover {
     width: 100%;
 	margin-top: 0.5rem;
 }
+/* 左边的菜单鼠标移上颜色变白色 */
+.manage-menu a:hover {
+    color: #FFF;
+}
+
+
+/* List 顶部 Add 的超链接 */
+.add {
+	padding: 5px 0;
+	margin: 20px 0;
+	background-color: #40A9F3;
+}
+
 .manage-menu-item {
 	transition-duration: 0.3s;
 	transition-timing-function: ease;
@@ -500,7 +555,7 @@ em:hover {
 	color: white;
 }
 .active {
-	background-color: rgb(64, 169, 243);
+	background-color: #40A9F3;
 }
 .manage-menu-item-a {
 	transition-duration: 0.3s;
@@ -541,10 +596,12 @@ em:hover {
 }
 
 .manage-right-content {
-	width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    padding-left: 2rem;
+
+
+    padding: 1px 20px 10px 20px;
+    margin: 15px;
+    border-radius: 5px;
+	background-color: #FFF;
 }
 .manage-content-title {
 	position: relative;
@@ -569,7 +626,7 @@ em:hover {
     align-items: center;
 }
 
-.admin-manage {
+.form_button {
     display: block;
     transition-duration: 0.3s;
     transition-timing-function: ease;
@@ -583,7 +640,6 @@ em:hover {
     background-size: 720%;
     border-top-width: 2px;
     border-right-width: 2px;
-    /*border-bottom-width: 2px;*/
     border-left-width: 2px;
     border-top-style: solid;
     border-right-style: solid;
@@ -602,7 +658,6 @@ em:hover {
     box-sizing: border-box;
     text-align: center;
     color: #FFF;
-    width: 100%;
     -webkit-user-select: none;
     text-decoration-line: none;
     text-decoration-style: initial;
@@ -612,10 +667,10 @@ em:hover {
     overflow-y: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding-top: 0.5em;
-    padding-bottom: 0.3em;
-    font-size: 0.875em;
+    padding: 0.5em 2em 0.4em 2em;
+    font-size: 0.9em;
     cursor: pointer;
+    margin-top: 1em;
 }
 .admin-manage:hover, .admin-manage:focus {
     background-color: rgb(102, 185, 244);
@@ -629,7 +684,6 @@ em:hover {
 
 /* 重写 iconfont 图标样式 */
 .icon-shili1, .icon-shili3, .icon-zhuji, .icon-worksheet {
-	color: #fff;
 	font-size: 18px !important;
 	font-weight: bold;
 }
@@ -641,12 +695,18 @@ em:hover {
     padding: 0 !important;
     border-radius: 0 !important;
 }
-.header {
+.fancybox-header {
     font-size: 16px;
     color: #FFF;
     height: 40px;
     line-height: 40px;
     padding-left: 10px;
-    background-color: #40A9F3;
+    background-color: #24282A;
+}
+.fancybox-close-small {
+    color: #FFF !important;
+}
+.fancybox-body {
+    padding: 10px 20px 10px 15px;
 }
 
