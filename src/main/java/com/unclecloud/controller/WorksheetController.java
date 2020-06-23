@@ -6,6 +6,11 @@ import com.unclecloud.util.JsonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
 
+import static com.unclecloud.util.Constants.PAGE_SIZE;
 import static com.unclecloud.util.FileUtil.uploadFile;
 import static com.unclecloud.util.JsonResult.jsonResultSuccess;
 import static org.springframework.data.domain.Sort.Direction.ASC;
@@ -43,12 +48,22 @@ public class WorksheetController {
      * List
      */
     @GetMapping("")
-    ModelAndView list() {
+    ModelAndView list(HttpServletRequest request,
+                      @RequestParam(value = "p", defaultValue = "1") int p,
+                      @RequestParam(value = "k", defaultValue = "", required = false) String k) {
         ModelAndView mav = new ModelAndView();
+        mav.addObject("k", k);
         Sort sort = Sort.by(new Sort.Order(ASC, "status"));
-        List<Worksheet> list = worksheetService.findAll(sort);
-        mav.addObject("list", list);
-        mav.addObject("count", list.size());
+        Pageable pageable = PageRequest.of(p - 1, PAGE_SIZE, sort);
+
+        Worksheet worksheet = new Worksheet();
+        worksheet.setTitle(k);
+        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("title", ExampleMatcher.GenericPropertyMatchers.exact());
+        Example<Worksheet> example = Example.of(worksheet, matcher);
+        Page<Worksheet> pages = worksheetService.findAll(example, pageable);
+
+        mav.addObject("list", pages);
+        mav.addObject("count", pages.getTotalPages());
         mav.addObject("active", "worksheet");
         mav.setViewName("worksheet/WorksheetList");
         return mav;

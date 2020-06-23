@@ -2,6 +2,9 @@ package com.unclecloud.service.impl;
 
 import com.unclecloud.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -26,6 +29,10 @@ public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<
 
     public List<T> findAll(Sort sort) {
         return baseRepository.findAll(sort);
+    }
+
+    public Page<T> findAll(Example example, Pageable pageable) {
+        return baseRepository.findAll(example, pageable);
     }
 
     @Transactional
